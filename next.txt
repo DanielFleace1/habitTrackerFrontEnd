@@ -1,1 +1,27 @@
-1.) Submit button 
+
+FUNCTIONALITY
+
+
+x.) display the right side 
+
+x.) Read Data & if entry for data exists 
+    a.) ask if user wants to continue to over write all
+    b.) ask if user wants to over write specific info 
+x.) Display previous days in a table 
+x.) Display Headings for table 
+x.) Read Data & if entry for data exists 
+    a.) ask if user wants to continue to over write all
+    b.) ask if user wants to over write specific info 
+x.) react router to show  stats 
+x.) Login for userID
+x.) Would need to be able to add previous dates, add & create & edit other dates etc.
+x.) Messages
+x) set state == undefined not good. 
+
+Test
+x.) Create test.
+Visual
+x.) Better visuals
+
+
+

@@ -5,3 +5,4 @@
     d.) scalable 
 
 2.) What is react - script - start and why is it giving me new output
+3.) when do i need to import react & when do i not

@@ -1,9 +1,10 @@
 import '../App.css'
 
-const Input = ({Handlers}) => {
-   
+const Input = ({Handlers,state}) => {
+ // console.log(state)
     return(
-      <input onChange={Handlers} className = "InputC" />
+      
+      <input onChange={Handlers} value={state}   className = "InputC" />
     )
   }
 

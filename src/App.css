@@ -25,3 +25,11 @@
 .RightSide{
   display: flex;
 }
+td{
+  text-align: center;
+  border-style: solid;
+}
+.Table{  
+  display: flex ;
+}
+

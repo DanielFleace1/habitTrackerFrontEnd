@@ -1,75 +1,56 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import './App.css';
 import Title  from './components/Title';
 import Questions from './components/Questions';
-
-
-
-// const SleepInput = ({handleSleepChange}) => {
-//   return(
-//     <input onChange={handleSleepChange} className = "InputC" />
-//   )
-// }
-// const FocusWinput = ({handleFocusW}) => {
-//   return(
-//     <input onChange={handleFocusW} className = "InputC" />
-//   )
-// }
-// const Input = ({Handlers}) => {
-//   console.log('type of handlers', typeof(Handlers))
-//   console.log(Handlers)
-//   return(
-//     <input onChange={Handlers} className = "InputC" />
-//   )
-// }
-
-
-// const Questions = ({handleSleepChange,focusW,handleFocusW,sleep,handleSubmit}) => {
-  
-//   const Questions = ['Hours of Sleep', 'Focused Work']
-//   const Handlers = [handleSleepChange,handleFocusW]
-//   //console.log(typeof(Handlers[0]))
-//   return(
-//     <div>
-//       <form onSubmit={handleSubmit}>
-
-
-//         {Questions.map((question,index) => {
-//           return( 
-//             <div className='ContainerC' key = {index}>
-//               <div className = "QuestionTextC"> {question} </div> 
-//               <Input Handlers = {Handlers[index]} />
-//             </div>
-//           )
-
-//         })}
-
-//         {/* <div className='ContainerC'>
-//           <div className = "QuestionTextC"> Hours of sleep </div> 
-//           <SleepInput handleSleepChange = {handleSleepChange}/>
-//         </div>
-
-
-//         <div className='ContainerC'>
-//           <div className = "QuestionTextC"> Hours of focused work? </div> 
-//           <FocusWinput handleFocusW = {handleFocusW}/>
-//       </div> */}
-//         <div><button type="submit">Submit</button></div> 
-//       </form>
-//     </div>
-//   )
-// }
+import Table from './components/Table';
+import helpers from './srcUtils/helperFns'
+import serverFunctions from './srcUtils/serverFunctions';
 
 function App() {
+  //base URL
+ 
   // State
   const [sleep, setNewSleep] = useState('')
   const [focusW, setFocusW] = useState('')
+  const [AppData,setAppData] = useState(undefined)
+  const [userID,setUserID] = useState('Daniel Fleace') // for login ??
   //Handler functions 
-  const handleSubmit = (e) => {
+  
+  const handleSubmit = (e) => { 
+    const baseURL = 'http://localhost:3001/Stats';   
     e.preventDefault()
-    console.log('sleep',sleep)
-    console.log('focusW:',focusW)
+    const statsObj ={
+      Sleep: sleep ,
+      Work: focusW ,
+      userID: userID,
+      Date: helpers.FormatDate()
+    }
+
+    const stat = helpers.checkEntry(AppData,statsObj.Date) 
+    // Entry For Date already exists 
+    if(stat > -1){
+      if(window.confirm('You have already submitted an entry for today. Click continue to overwrite all data with listed data now')){
+        serverFunctions.update(AppData[stat].id,statsObj)
+          .then(response =>{
+            setAppData( AppData.map(stat => stat.Date !== statsObj.Date ? stat : response.data) )
+            //setPersons(persons.map(prsn=> prsn.id !== person.id ? prsn : response.data))
+            setNewSleep('')
+            setFocusW('')
+          })
+      }
+    }
+    // New Entry 
+    else{
+     serverFunctions.create(statsObj)
+      .then(response => { 
+        setAppData(AppData.concat(response.data));
+        setNewSleep('')
+        setFocusW('')
+       })
+    }
   }
+
   const handleSleepChange = (e) => {
     setNewSleep(e.target.value);
   }
@@ -79,24 +60,29 @@ function App() {
   // Arrays
   const QuestionsArray = ['Hours of Sleep', 'Focused Work']
   const Handlers = [handleSleepChange,handleFocusW]
-  
-  // Return 
-  return (
-    
-    // Parent container 
-    <div >
-     
-      {/* Components */}
+  const StateArray = [sleep,focusW]
+  const TableArray = ['Date','Sleep','Work']
+
+  // Effects
+  useEffect(() => {
+    axios
+      .get('http://localhost:3001/stats')
+      .then(response => {
+        setAppData(response.data)
+      })
+  }, [])
+
+  // Final  Return 
+  return ( 
+    <div className='Div'>    
       <Title />
-      <form onSubmit={handleSubmit}>
-        <Questions QuestionsArray = {QuestionsArray} Handlers = {Handlers} />  
-        <div><button type="submit">Submit</button></div>  
+      <form className='Form' onSubmit={handleSubmit}>
+        <Questions QuestionsArray = {QuestionsArray} StateArray = {StateArray} Handlers = {Handlers} />  
+        <div><button type="submit">Submit</button></div> 
       </form>
-      
-      
-      {/* End Components  */}
+      <Table AppData = {AppData} TableArray = {TableArray} /> 
     </div>
+
   );
 }
-
 export default App;

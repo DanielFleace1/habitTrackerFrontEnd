@@ -1,16 +1,16 @@
 import React from "react";
 import Input from "./Input";
-import '../App.css'
+import '../App.css' 
 
 
-const Questions = ({QuestionsArray,Handlers}) => {
+const Questions = ({QuestionsArray,Handlers,StateArray}) => {
   return(
     <div>
         {QuestionsArray.map((question,index) => {
           return( 
             <div className='ContainerC' key = {index}>
-              <div className = "QuestionTextC"> {QuestionsArray} </div> 
-              <Input Handlers = {Handlers[index]} />
+              <div className = "QuestionTextC"> {question} </div> 
+              <Input Handlers = {Handlers[index]} state = {StateArray[index]}  />
             </div>
           )
         })}

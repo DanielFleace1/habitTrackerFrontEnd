@@ -1,0 +1,53 @@
+{
+  "Stats": [
+    {
+      "Sleep": "7",
+      "Work": "8",
+      "userID": "Daniel Fleace",
+      "Date": "2022-01-01",
+      "id": 1
+    },
+    {
+      "Sleep": "8",
+      "Work": "7",
+      "userID": "Daniel Fleace",
+      "Date": "2022-01-02",
+      "id": 2
+    },
+    {
+      "Sleep": "8",
+      "Work": "6",
+      "userID": "Daniel Fleace",
+      "Date": "2022-01-03",
+      "id": 3
+    },
+    {
+      "Sleep": "5",
+      "Work": "7",
+      "userID": "Daniel Fleace",
+      "Date": "2022-01-04",
+      "id": 4
+    },
+    {
+      "Sleep": "8",
+      "Work": "8",
+      "userID": "Daniel Fleace",
+      "Date": "2022-01-05",
+      "id": 5
+    },
+    {
+      "Sleep": "7",
+      "Work": "8",
+      "userID": "Daniel Fleace",
+      "Date": "2022-01-06",
+      "id": 6
+    },
+    {
+      "Sleep": "8",
+      "Work": "9",
+      "userID": "Daniel Fleace",
+      "Date": "2022-01-07",
+      "id": 7
+    }
+  ]
+}
