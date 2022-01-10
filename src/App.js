@@ -9,24 +9,36 @@ import serverFunctions from './srcUtils/serverFunctions';
 
 function App() {
   //base URL
- 
   // State
   const [sleep, setNewSleep] = useState('')
   const [focusW, setFocusW] = useState('')
+  const [exercise,setExercise] = useState('')
+  const [NGs, setNGs] = useState('')
+  const [workRating,setWorkRating] = useState('')
+  const [healthRating,setHealthRating] = useState('')
+  const [overall, setOverall] = useState('')
+  const [posNotes,setPosNotes] = useState('')
+  const [negNotes,setNegNotes] = useState('')
   const [AppData,setAppData] = useState(undefined)
   const [userID,setUserID] = useState('Daniel Fleace') // for login ??
+  const [date, setDate] = useState(helpers.FormatDate())
   //Handler functions 
-  
   const handleSubmit = (e) => { 
     const baseURL = 'http://localhost:3001/Stats';   
     e.preventDefault()
     const statsObj ={
       Sleep: sleep ,
       Work: focusW ,
+      Exercise: exercise,
+      NGs:NGs,
+      workRating: workRating,
+      healthRating: healthRating,
+      overall: overall,
+      posNotes:posNotes,
+      negNotes:negNotes,
       userID: userID,
       Date: helpers.FormatDate()
     }
-
     const stat = helpers.checkEntry(AppData,statsObj.Date) 
     // Entry For Date already exists 
     if(stat > -1){
@@ -54,14 +66,48 @@ function App() {
   const handleSleepChange = (e) => {
     setNewSleep(e.target.value);
   }
-  const handleFocusW = (e) => {
+  const handleFocusWchange = (e) => {
     setFocusW(e.target.value);
   }
+
+ const handleExerciseChange = (e) => {
+   setExercise(e.target.value)
+ }
+
+ const handleNutrionalChange = (e) => {
+  setNGs(e.target.value)
+}
+
+const handleWorkChange = (e) => {
+  setWorkRating(e.target.value)
+}
+
+const handleHealthChange = (e) => {
+  setHealthRating(e.target.value)
+}
+
+const handleOverallChange = (e) => {
+  setOverall(e.target.value)
+} 
+
+const handelPositiveNoteChange = (e) => {
+  setPosNotes(e.target.value)
+}
+
+const handleNegativeNoteChange = (e) => {
+  setNegNotes(e.target.value)
+}
+
+
+
+
+
+
   // Arrays
-  const QuestionsArray = ['Hours of Sleep', 'Focused Work']
-  const Handlers = [handleSleepChange,handleFocusW]
-  const StateArray = [sleep,focusW]
-  const TableArray = ['Date','Sleep','Work']
+  const QuestionsArray = ['Hours of Sleep', 'Focused Work', 'Did you exercise?' , 'Did you hit nutrional goals?','Work: 0-10?', 'Health: 0 - 10', 'Overall day: 0-10', 'Positive notes about day?', 'Negative notes about day?']
+  const Handlers = [handleSleepChange,handleFocusWchange, handleExerciseChange, handleNutrionalChange, handleWorkChange, handleHealthChange, handleOverallChange, handelPositiveNoteChange, handleNegativeNoteChange]
+  const StateArray = [sleep,focusW,exercise,NGs,workRating, healthRating, overall,posNotes,negNotes]
+  const TableArray = ['Date','Sleep','Work','Exercise','NGs','workRating','healthRating','overall' ,'posNotes','negNotes']
 
   // Effects
   useEffect(() => {
@@ -75,14 +121,13 @@ function App() {
   // Final  Return 
   return ( 
     <div className='Div'>    
-      <Title />
+      <Title date = {date} />
       <form className='Form' onSubmit={handleSubmit}>
         <Questions QuestionsArray = {QuestionsArray} StateArray = {StateArray} Handlers = {Handlers} />  
         <div><button type="submit">Submit</button></div> 
       </form>
       <Table AppData = {AppData} TableArray = {TableArray} /> 
     </div>
-
   );
 }
 export default App;

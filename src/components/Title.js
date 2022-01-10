@@ -1,13 +1,13 @@
 import React from "react";
 
-const Title = () => {
+const Title = ({date}) => {
   return(
     <div className="TitleC">
         <div>
           Habit Tracker App
         </div>
         <div>
-          Todays Date is : x
+           Enter the date to be edited <input value = {date}/>
         </div>
     </div>
   )

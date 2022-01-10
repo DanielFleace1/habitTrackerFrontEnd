@@ -1,6 +1,4 @@
 const Table = ({AppData,TableArray}) => {
-    
-    
 
     //whats a better way to do this??
     if(AppData === undefined){
@@ -14,6 +12,14 @@ const Table = ({AppData,TableArray}) => {
                     <th>Date</th>
                     <th>Sleep</th>
                     <th>Work</th>
+                    <th>Exercise</th>
+                    <th>Nutrional Goals</th>
+                    <th>Work Rating</th>
+                    <th>Health  Rating</th>
+                    <th>Overall Rating</th>
+                    <th>Positive Notes</th>
+                    <th>Negative Notes</th>
+
                 </tr>
                 {AppData.map((stat,index) => {return(
                     <tr key = {index}>
@@ -26,6 +32,9 @@ const Table = ({AppData,TableArray}) => {
                                     {stat[element]}
                                 </button>
                             </td>)
+
+
+
                          })}
                     </tr>          
                 )  
