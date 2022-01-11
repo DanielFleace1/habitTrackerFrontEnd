@@ -37,7 +37,7 @@ function App() {
       posNotes:posNotes,
       negNotes:negNotes,
       userID: userID,
-      Date: helpers.FormatDate()
+      Date: date 
     }
     const stat = helpers.checkEntry(AppData,statsObj.Date) 
     // Entry For Date already exists 
@@ -98,6 +98,9 @@ const handleNegativeNoteChange = (e) => {
   setNegNotes(e.target.value)
 }
 
+const handleDateChange = (e) =>{
+  setDate(e.target.value)
+}
 
 
 
@@ -121,7 +124,7 @@ const handleNegativeNoteChange = (e) => {
   // Final  Return 
   return ( 
     <div className='Div'>    
-      <Title date = {date} />
+      <Title date = {date} handleDateChange={handleDateChange} />
       <form className='Form' onSubmit={handleSubmit}>
         <Questions QuestionsArray = {QuestionsArray} StateArray = {StateArray} Handlers = {Handlers} />  
         <div><button type="submit">Submit</button></div> 

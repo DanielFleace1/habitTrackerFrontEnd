@@ -1,3 +1,7 @@
+import helperFns from '../srcUtils/helperFns'
+const clone = require('rfdc')()
+
+
 const Table = ({AppData,TableArray}) => {
 
     //whats a better way to do this??
@@ -5,6 +9,12 @@ const Table = ({AppData,TableArray}) => {
         return(<div></div>)
     }
     else if(AppData){ 
+    // wrangle data     
+    let AppDataClone = clone(AppData)
+    let filteredADC = helperFns.displayfilter(AppDataClone)
+    filteredADC.sort(helperFns.sortByDate);
+    filteredADC.reverse();
+    // end data wrangle 
         return (
             <table className="Table">
                 <tbody>
@@ -19,9 +29,8 @@ const Table = ({AppData,TableArray}) => {
                     <th>Overall Rating</th>
                     <th>Positive Notes</th>
                     <th>Negative Notes</th>
-
                 </tr>
-                {AppData.map((stat,index) => {return(
+                {filteredADC.map((stat,index) => {return(
                     <tr key = {index}>
                         {/* {console.log(stat)} */}
                         {TableArray.map((element ,index) => {return(
