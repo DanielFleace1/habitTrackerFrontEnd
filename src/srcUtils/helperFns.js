@@ -27,7 +27,7 @@ const displayfilter = (arry) => {
 }
 
 export default{
-     FormatDate,
+     
      checkEntry,
      sortByDate,
      displayfilter,   

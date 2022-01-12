@@ -5,6 +5,7 @@ import DatePicker from '@mui/lab/DatePicker';
 import TextField from '@mui/material/TextField';
 
 const Title = ({date,handleDateChange}) => {
+  
   return(
     <div className="TitleC">
         <div  className="titleText"> Habit Tracker App </div>

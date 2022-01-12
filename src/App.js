@@ -7,6 +7,7 @@ import Table from './components/Table';
 import helpers from './srcUtils/helperFns'
 import serverFunctions from './srcUtils/serverFunctions';
 import { format, set } from 'date-fns'
+import NumberPicker from "react-widgets/NumberPicker";
 
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
@@ -27,7 +28,7 @@ function App() {
   const [negNotes,setNegNotes] = useState('')
   const [AppData,setAppData] = useState(undefined)
   const [userID,setUserID] = useState('Daniel Fleace') // for login ??
-  const [date, setDate] = useState(helpers.FormatDate())
+  const [date, setDate] = useState(format(new Date, 'yyyy/MM/dd'))
   //Handler functions 
   const handleSubmit = (e) => { 
     const baseURL = 'http://localhost:3001/Stats';   
@@ -55,6 +56,13 @@ function App() {
             //setPersons(persons.map(prsn=> prsn.id !== person.id ? prsn : response.data))
             setNewSleep('')
             setFocusW('')
+            setExercise('')
+            setNGs('')
+            setWorkRating('')
+            setHealthRating('')
+            setOverall('')
+            setPosNotes('')
+            setNegNotes('')
           })
       }
     }
@@ -65,7 +73,29 @@ function App() {
         setAppData(AppData.concat(response.data));
         setNewSleep('')
         setFocusW('')
+        setExercise('')
+        setNGs('')
+        setWorkRating('')
+        setHealthRating('')
+        setOverall('')
+        setPosNotes('')
+        setNegNotes('')
        })
+    }
+  }
+
+  const handleClearAllInputs = () => {
+    if(window.confirm('Are you sure you want to clear all inputs from form & Reset Date?')){
+      setNewSleep('')
+      setFocusW('')
+      setExercise('')
+      setNGs('')
+      setWorkRating('')
+      setHealthRating('')
+      setOverall('')
+      setPosNotes('')
+      setNegNotes('')  
+      setDate(format(new Date, 'yyyy/MM/dd'))
     }
   }
 
@@ -75,40 +105,37 @@ function App() {
   const handleFocusWchange = (e) => {
     setFocusW(e.target.value);
   }
-
  const handleExerciseChange = (e) => {
    setExercise(e.target.value)
  }
-
  const handleNutrionalChange = (e) => {
   setNGs(e.target.value)
-}
-
-const handleWorkChange = (e) => {
-  setWorkRating(e.target.value)
-}
-const handleHealthChange = (e) => {
-  setHealthRating(e.target.value)
-}
-const handleOverallChange = (e) => {
-  setOverall(e.target.value)
-} 
-const handelPositiveNoteChange = (e) => {
-  setPosNotes(e.target.value)
-}
-const handleNegativeNoteChange = (e) => {
-  setNegNotes(e.target.value)
-}
-const handleDateChange = (newValue) => {
-  setDate(format(newValue, 'yyyy/MM/dd'))
-}
+  }
+  const handleWorkChange = (e) => {
+    setWorkRating(e.target.value)
+  }
+  const handleHealthChange = (e) => {
+    setHealthRating(e.target.value)
+  }
+  const handleOverallChange = (e) => {
+    setOverall(e.target.value)
+  } 
+  const handelPositiveNoteChange = (e) => {
+    setPosNotes(e.target.value)
+  }
+  const handleNegativeNoteChange = (e) => {
+    setNegNotes(e.target.value)
+  }
+  const handleDateChange = (newValue) => {
+    setDate(format(newValue, 'yyyy/MM/dd'))
+  }
 
 
 
 
 
   // Arrays
-  const QuestionsArray = ['Hours of Sleep', 'Focused Work', 'Did you exercise?' , 'Did you hit nutrional goals?','Work: 0-10?', 'Health: 0 - 10', 'Overall day: 0-10', 'Positive notes about day?', 'Negative notes about day?']
+  const QuestionsArray = ['Hours of Sleep?', 'Focused Work?', 'Did you exercise?' , 'Did you hit nutrional goals?','Work: 0-10?', 'Health: 0 - 10?', 'Overall day: 0-10?', 'Positive notes about day?', 'Negative notes about day?']
   const Handlers = [handleSleepChange,handleFocusWchange, handleExerciseChange, handleNutrionalChange, handleWorkChange, handleHealthChange, handleOverallChange, handelPositiveNoteChange, handleNegativeNoteChange]
   const StateArray = [sleep,focusW,exercise,NGs,workRating, healthRating, overall,posNotes,negNotes]
   const TableArray = ['Date','Sleep','Work','Exercise','NGs','workRating','healthRating','overall' ,'posNotes','negNotes']
@@ -124,13 +151,14 @@ const handleDateChange = (newValue) => {
 
   // Final  Return 
   return ( 
-    <div >    
+    <div>    
       <Title date = {date} handleDateChange={handleDateChange} />
       <form className='Form' onSubmit={handleSubmit}>
         <Questions QuestionsArray = {QuestionsArray} StateArray = {StateArray} Handlers = {Handlers} />  
-        <div><button type="submit">Submit</button></div> 
+        <div><button className='submitButton' type="submit">Submit</button></div>
       </form>
-      {/* <Table AppData = {AppData} TableArray = {TableArray} />  */}
+      <div><button className ='submitButton' onClick = {handleClearAllInputs} > Reset Form & Date </button></div>
+
     </div>
   );
 }

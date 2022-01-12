@@ -5,7 +5,7 @@
   background-color: rgb(29 161 242); 
   color: white;
   font-family: Helvetica Neue;
-  height: 18vh;
+  height: 16vh;
   /* //border-style: solid; */
   border-bottom: 2px solid rgb(177, 175, 175)
 }
@@ -20,21 +20,41 @@
   margin-top: 23px;
 }
 /* End title section */
+
 /* Start Questions Styling  */
 .ContainerC{
   display: flex;
   flex-direction: right;
   width: 40vw;
-  /* border-style: solid; */
- 
+  margin-top: 7px;
+  margin-left: 1vh;
+    /* border-style: solid; */
 }
 .QuestionTextC{
   display: flex;
   color: rgb(34, 33, 33);
   font-family: 'Courier New', Courier, monospace;
   width: 15vw;
+  align-items: center;
   /* border-style: solid; */
 }
+.Input{
+  display: flex;
+  width: 18.3vw; 
+  margin-top: 3px;
+}
+/* End Questions Styling  */
+.submitButton{
+  margin-top: 10px;
+  margin-left: 1vh;
+  width: 33.2vw;
+  height: 5vh;
+  color: rgb(29 161 242);
+
+
+}
+
+
 
 /* .numberPicker{
   height: 100vh;
