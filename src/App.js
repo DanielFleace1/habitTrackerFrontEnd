@@ -6,6 +6,12 @@ import Questions from './components/Questions';
 import Table from './components/Table';
 import helpers from './srcUtils/helperFns'
 import serverFunctions from './srcUtils/serverFunctions';
+import { format, set } from 'date-fns'
+
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import setDate from 'date-fns/setDate';
+
 
 function App() {
   //base URL
@@ -81,25 +87,20 @@ function App() {
 const handleWorkChange = (e) => {
   setWorkRating(e.target.value)
 }
-
 const handleHealthChange = (e) => {
   setHealthRating(e.target.value)
 }
-
 const handleOverallChange = (e) => {
   setOverall(e.target.value)
 } 
-
 const handelPositiveNoteChange = (e) => {
   setPosNotes(e.target.value)
 }
-
 const handleNegativeNoteChange = (e) => {
   setNegNotes(e.target.value)
 }
-
-const handleDateChange = (e) =>{
-  setDate(e.target.value)
+const handleDateChange = (newValue) => {
+  setDate(format(newValue, 'yyyy/MM/dd'))
 }
 
 
@@ -123,13 +124,13 @@ const handleDateChange = (e) =>{
 
   // Final  Return 
   return ( 
-    <div className='Div'>    
+    <div >    
       <Title date = {date} handleDateChange={handleDateChange} />
       <form className='Form' onSubmit={handleSubmit}>
         <Questions QuestionsArray = {QuestionsArray} StateArray = {StateArray} Handlers = {Handlers} />  
         <div><button type="submit">Submit</button></div> 
       </form>
-      <Table AppData = {AppData} TableArray = {TableArray} /> 
+      {/* <Table AppData = {AppData} TableArray = {TableArray} />  */}
     </div>
   );
 }

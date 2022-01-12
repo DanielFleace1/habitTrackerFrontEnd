@@ -1,27 +1,54 @@
 
+/* Title Section  */
 .TitleC{
   text-align: center;
+  background-color: rgb(29 161 242); 
+  color: white;
+  font-family: Helvetica Neue;
+  height: 18vh;
+  /* //border-style: solid; */
+  border-bottom: 2px solid rgb(177, 175, 175)
 }
-
+.titleText{
+  height: 4vh;
+  font-size: 4vh;
+  text-decoration: underline;
+}
+.datePicker{
+  display: flex;
+  justify-content: center;
+  margin-top: 23px;
+}
+/* End title section */
+/* Start Questions Styling  */
 .ContainerC{
   display: flex;
-  width: 30vw;
-  
+  flex-direction: right;
+  width: 40vw;
+  /* border-style: solid; */
+ 
 }
-
 .QuestionTextC{
   display: flex;
-  width: 30vw;
+  color: rgb(34, 33, 33);
+  font-family: 'Courier New', Courier, monospace;
+  width: 15vw;
+  /* border-style: solid; */
 }
 
-.InputC{
-  display: flex;
+/* .numberPicker{
+  height: 100vh;
+  /* margin-left: 1000px; 
+} */
+
+
+/* .InputC{
+  display: flex ;
   size: 10vw;
   border-top-width: 0px;
   border-left: 0px;
   border-right: 0px;
-}
-
+} */
 .RightSide{
   display: flex;
 }

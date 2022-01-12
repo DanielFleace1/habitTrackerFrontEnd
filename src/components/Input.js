@@ -1,10 +1,13 @@
 import '../App.css'
+import NumberPicker from "react-widgets/NumberPicker";
 
 const Input = ({Handlers,state}) => {
  // console.log(state)
     return(
-  
-      <input onChange={Handlers} value={state}   className = "InputC" />
+      <div>
+      {/* //<input onChange={Handlers} value={state}   className = "InputC" /> */}
+      <NumberPicker />
+      </div>
     )
   }
 

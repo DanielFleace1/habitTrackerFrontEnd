@@ -1,13 +1,17 @@
 import React from "react";
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import DatePicker from '@mui/lab/DatePicker';
+import TextField from '@mui/material/TextField';
 
 const Title = ({date,handleDateChange}) => {
   return(
     <div className="TitleC">
-        <div>
-          Habit Tracker App
-        </div>
-        <div>
-           Enter the date to be edited <input onChange = {handleDateChange} value = {date} />
+        <div  className="titleText"> Habit Tracker App </div>
+        <div className="datePicker">
+            <LocalizationProvider   dateAdapter={AdapterDateFns}>
+              <DatePicker  label="Enter Data for:" value={date} onChange={handleDateChange} renderInput={(params) => <TextField  {...params} />}/>
+            </LocalizationProvider>
         </div>
     </div>
   )
