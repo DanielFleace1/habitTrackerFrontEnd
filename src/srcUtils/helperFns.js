@@ -1,4 +1,8 @@
+import { format, set } from 'date-fns'
 
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import setDate from 'date-fns/setDate';
 const FormatDate= () => {
   return new Date().toISOString().slice(0, 10);
 }
@@ -9,8 +13,8 @@ const checkEntry = (array, value) => {
 
 // sort app data in ascending order 
 const sortByDate = (c,d) =>{
-  let a = c.Date.split('-').join('')
-  let b = d.Date.split('-').join('')
+  let a = c.Date.split('/').join('')
+  let b = d.Date.split('/').join('')
   return a-b
 }     
 
@@ -18,16 +22,15 @@ const sortByDate = (c,d) =>{
 const displayfilter = (arry) => {
   return( 
     arry.filter((obj) => {
-      let a = obj.Date.split('-').join('');
-      let b = FormatDate();
-          b = b.split('-').join('')-7;
+      let a = obj.Date.split('/').join('');
+      let b = format(new Date, 'yyyy/MM/dd')
+          b = b.split('/').join('')-7;
       return (a > b )
     })
   )
 }
 
 export default{
-     
      checkEntry,
      sortByDate,
      displayfilter,   

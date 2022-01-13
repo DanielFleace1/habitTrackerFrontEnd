@@ -25,9 +25,9 @@
 .ContainerC{
   display: flex;
   flex-direction: right;
-  width: 40vw;
+  width: 35vw;
   margin-top: 7px;
-  margin-left: 1vh;
+  margin-left: 2vh;
     /* border-style: solid; */
 }
 .QuestionTextC{
@@ -44,15 +44,60 @@
   margin-top: 3px;
 }
 /* End Questions Styling  */
+/* Start submit & clear styling  */
 .submitButton{
   margin-top: 10px;
   margin-left: 1vh;
   width: 33.2vw;
   height: 5vh;
   color: rgb(29 161 242);
-
-
 }
+/* End sumbit & clear styling*/
+
+/*Start FormTable Start*/
+.formTable{
+  display: flex;
+}
+/*Start FormTable End*/
+
+
+/*Start Table Styling*/
+.table{
+  /* background-color:white;  */
+  /* border-style: solid; */
+  border-color: black ;
+  margin-right: 20px;
+  border-left: solid rgb(226, 226, 226);
+  padding-left: 20px;
+  
+}
+
+.tableTitle{
+  color: black;
+  font-size: 4vh;
+  text-align: center;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+th{
+  height: 1vh;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+td{
+  text-align: center;
+  width: 10vw;
+  /* border-style: solid; */
+}
+
+.tableButton{
+  width: 7.5em;
+}
+
+
+/*End Table Styling*/
 
 
 
@@ -69,7 +114,7 @@
   border-left: 0px;
   border-right: 0px;
 } */
-.RightSide{
+/* .RightSide{
   display: flex;
 }
 td{
@@ -78,5 +123,5 @@ td{
 }
 .Table{  
   display: flex ;
-}
+} */
 

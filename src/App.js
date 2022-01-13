@@ -152,12 +152,22 @@ function App() {
   // Final  Return 
   return ( 
     <div>    
+
       <Title date = {date} handleDateChange={handleDateChange} />
+      
+      <div className='formTable'>
+      
       <form className='Form' onSubmit={handleSubmit}>
         <Questions QuestionsArray = {QuestionsArray} StateArray = {StateArray} Handlers = {Handlers} />  
         <div><button className='submitButton' type="submit">Submit</button></div>
+        <div><button type ="reset" className ='submitButton' onClick = {handleClearAllInputs} > Reset Form & Date </button></div>
       </form>
-      <div><button className ='submitButton' onClick = {handleClearAllInputs} > Reset Form & Date </button></div>
+      
+      <Table className="table" AppData={AppData} TableArray={TableArray}/>
+      
+      </div>
+      
+      
 
     </div>
   );
