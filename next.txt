@@ -4,7 +4,9 @@ LHS
     - better pops uops for are you sure you want to submit 
     
 
-
+Table
+    - handle table change. copying appData array so i dont directly alter state. is the necessary.
+    
 
 
 

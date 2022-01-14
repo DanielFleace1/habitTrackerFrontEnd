@@ -1,6 +1,11 @@
 import axios from 'axios'
 
-const baseURL = 'http://localhost:3001/Stats'
+
+//Front End URL
+//const baseURL = 'http://localhost:3001/stats'
+
+//BackEnd URL
+const baseURL = 'http://localhost:3001/api/data'
 
 
 // Create New Entry 
@@ -12,8 +17,9 @@ const update = (id,newObj) =>{
     return axios.put(`${baseURL}/${id}`,newObj)
 }
 
+export default {
 
-export default{
-    create,
-    update,
+  create,
+  update,
+
 }

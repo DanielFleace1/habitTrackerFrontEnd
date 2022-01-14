@@ -1,17 +1,17 @@
 {
   "Stats": [
     {
-      "Sleep": 8,
-      "Work": 7,
+      "Sleep": 6,
+      "Work": 6,
       "Exercise": "Weight Lifting",
       "NGs": "Yes",
-      "workRating": 6,
+      "workRating": 7,
       "healthRating": 8,
-      "overall": 6,
+      "overall": 8,
       "posNotes": "A positive note",
-      "negNotes": "A negative note",
+      "negNotes": "A negative note\n",
       "userID": "Daniel Fleace",
-      "Date": "2022/01/12",
+      "Date": "2022/01/11",
       "id": 1
     },
     {
@@ -97,7 +97,34 @@
       "userID": "Daniel Fleace",
       "Date": "2022/01/06",
       "id": 1
+    },
+    {
+      "Sleep": 8,
+      "Work": 3,
+      "Exercise": "Weight Lifting",
+      "NGs": "No",
+      "workRating": 3,
+      "healthRating": 4,
+      "overall": 4,
+      "posNotes": "Pos note",
+      "negNotes": "Neg note: felt off yesterday",
+      "userID": "Daniel Fleace",
+      "Date": "2022/01/13",
+      "id": 2
+    },
+    {
+      "Sleep": 9,
+      "Work": 6,
+      "Exercise": "Missed",
+      "NGs": "No",
+      "workRating": 4,
+      "healthRating": 8,
+      "overall": 8,
+      "posNotes": "a positive note",
+      "negNotes": "a negative note",
+      "userID": "Daniel Fleace",
+      "Date": "2022/01/14",
+      "id": 3
     }
-    
   ]
 }

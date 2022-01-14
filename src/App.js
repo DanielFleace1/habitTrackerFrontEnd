@@ -9,9 +9,15 @@ import serverFunctions from './srcUtils/serverFunctions';
 import { format, set } from 'date-fns'
 import NumberPicker from "react-widgets/NumberPicker";
 
-import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import setDate from 'date-fns/setDate';
+import helperFns from './srcUtils/helperFns';
+
+
+const clone = require('rfdc')()
+
+
+// import AdapterDateFns from '@mui/lab/AdapterDateFns';
+// import LocalizationProvider from '@mui/lab/LocalizationProvider';
+// import setDate from 'date-fns/setDate';
 
 
 function App() {
@@ -130,6 +136,20 @@ function App() {
     setDate(format(newValue, 'yyyy/MM/dd'))
   }
 
+   const handleTableChange = (a,b) => {
+     console.log('a is',a)
+     console.log('b is',b)
+ }
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -142,29 +162,28 @@ function App() {
 
   // Effects
   useEffect(() => {
-    axios
-      .get('http://localhost:3001/stats')
+    axios.get('http://localhost:3001/api/data')
       .then(response => {
+        console.log(response.data)
         setAppData(response.data)
       })
   }, [])
+
+
+
 
   // Final  Return 
   return ( 
     <div>    
 
-      <Title date = {date} handleDateChange={handleDateChange} />
-      
+      <Title date = {date} handleDateChange={handleDateChange}/>
       <div className='formTable'>
-      
       <form className='Form' onSubmit={handleSubmit}>
         <Questions QuestionsArray = {QuestionsArray} StateArray = {StateArray} Handlers = {Handlers} />  
         <div><button className='submitButton' type="submit">Submit</button></div>
         <div><button type ="reset" className ='submitButton' onClick = {handleClearAllInputs} > Reset Form & Date </button></div>
       </form>
-      
-      <Table className="table" AppData={AppData} TableArray={TableArray}/>
-      
+      <Table className="table" AppData={AppData} TableArray={TableArray} handleTableChange={handleTableChange} date = {date} />
       </div>
       
       

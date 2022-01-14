@@ -1,14 +1,17 @@
-import { format, set } from 'date-fns'
+import { format, set,formatDistance,subDays, isYesterday } from 'date-fns'
 
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import setDate from 'date-fns/setDate';
-const FormatDate= () => {
-  return new Date().toISOString().slice(0, 10);
-}
+import { el } from 'date-fns/locale';
 
 const checkEntry = (array, value) => {
-  return array.findIndex(element => element.Date === value)
+  return array.findIndex(element => {
+    console.log('element',element)
+    console.log('value',value)
+    return element.Date ===  value
+  }
+  )
 }
 
 // sort app data in ascending order 
@@ -30,8 +33,15 @@ const displayfilter = (arry) => {
   )
 }
 
+const dateMinusNum = (date,num) => {
+  let a = date.split('/').join('') - num
+  const b = a.push('3')
+  return b
+}
+
 export default{
      checkEntry,
      sortByDate,
-     displayfilter,   
+     displayfilter,
+     dateMinusNum,   
 }
