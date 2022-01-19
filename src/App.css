@@ -166,6 +166,8 @@ td{
 }
 
   /* Start Delete Styling */
+
+  
   .deleteContainer{
     font-family: 'Courier New', Courier, monospace;
     display: flex;

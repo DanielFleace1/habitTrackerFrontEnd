@@ -103,16 +103,16 @@ function App() {
   }
 
   const handleClearAllInputs = () => {
-      setNewSleep('')
-      setFocusW('')
-      setExercise('')
-      setNGs('')
-      setWorkRating('')
-      setHealthRating('')
-      setOverall('')
-      setPosNotes('')
-      setNegNotes('')  
-      setDate(format(new Date, 'yyyy/MM/dd'))
+    setNewSleep('')
+    setFocusW('')
+    setExercise('')
+    setNGs('')
+    setWorkRating('')
+    setHealthRating('')
+    setOverall('')
+    setPosNotes('')
+    setNegNotes('')  
+    setDate(format(new Date, 'yyyy/MM/dd'))
   }
 
   const handleSleepChange = (e) => {

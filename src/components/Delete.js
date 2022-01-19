@@ -9,20 +9,16 @@ import App from "../App";
 const clone = require('rfdc')()
 
 const Delete = ({handleDeleteDateChange,handleDeleteSubmit,deleteDate}) => {
-
   return(
-
-        <form onSubmit={handleDeleteSubmit}>
-        <div className="deleteContainer">
-          <div className="deleteTitle">Select date to delete</div>
-          <LocalizationProvider   dateAdapter={AdapterDateFns}>
-            <DatePicker  value = {deleteDate} onChange={handleDeleteDateChange} renderInput={(params) => <TextField  {...params} />}/>
-        </LocalizationProvider> 
-        <button type="submit">  Delete </button> 
-        </div> 
-        </form>
-        
-    
+    <form onSubmit={handleDeleteSubmit}>
+    <div className="deleteContainer">
+      <div className="deleteTitle">Select date to delete</div>
+      <LocalizationProvider   dateAdapter={AdapterDateFns}>
+        <DatePicker  value = {deleteDate} onChange={handleDeleteDateChange} renderInput={(params) => <TextField  {...params} />}/>
+      </LocalizationProvider> 
+      <button type="submit">  Delete </button> 
+      </div> 
+    </form>
   )
 }
 
