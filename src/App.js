@@ -6,7 +6,7 @@ import Questions from './components/Questions';
 import Table from './components/Table';
 import helpers from './srcUtils/helperFns'
 import serverFunctions from './srcUtils/serverFunctions';
-import { format, set } from 'date-fns'
+import { format, set } from 'date-fns';
 // import NumberPicker from "react-widgets/NumberPicker";
 // import DeleteButton from './components/Delete';
 
@@ -35,7 +35,9 @@ function App() {
   const [AppData,setAppData] = useState(undefined)
   const [userID,setUserID] = useState('Daniel Fleace') // for login ??
   const [date, setDate] = useState(format(new Date, 'yyyy/MM/dd'))
-  const [ deleteDate, setDeleteDate] = useState(format(new Date,"yyyy/MM/dd"))  
+  const [ deleteDate, setDeleteDate] = useState(format(new Date,"yyyy/MM/dd"))
+  const [submissionAlert, setSubmissionAlert] = useState(null)
+  
 
   //Handler functions 
   const handleSubmit = (e) => { 
@@ -62,6 +64,9 @@ function App() {
           .then(response =>{
             setAppData( AppData.map(stat => stat.Date !== statsObj.Date ? stat : response.data) )
             //setPersons(persons.map(prsn=> prsn.id !== person.id ? prsn : response.data))
+            
+ 
+            
             setNewSleep('')
             setFocusW('')
             setExercise('')
@@ -78,6 +83,11 @@ function App() {
     else{
      serverFunctions.create(statsObj)
       .then(response => { 
+        setSubmissionAlert('success')
+        setTimeout(() => {
+          console.log('inside!')
+          setSubmissionAlert(null)
+          }, 3000)
         setAppData(AppData.concat(response.data));
         setNewSleep('')
         setFocusW('')
@@ -93,7 +103,6 @@ function App() {
   }
 
   const handleClearAllInputs = () => {
-    if(window.confirm('Are you sure you want to clear all inputs from form & Reset Date?')){
       setNewSleep('')
       setFocusW('')
       setExercise('')
@@ -104,7 +113,6 @@ function App() {
       setPosNotes('')
       setNegNotes('')  
       setDate(format(new Date, 'yyyy/MM/dd'))
-    }
   }
 
   const handleSleepChange = (e) => {
@@ -206,7 +214,7 @@ function App() {
   return ( 
     <div>    
 
-      <Title date = {date} handleDateChange={handleDateChange}/>
+      <Title date = {date} handleDateChange={handleDateChange} submissionAlert = {submissionAlert}/>
       <div className='formTable'>
       <form className='Form' onSubmit={handleSubmit}>
         <Questions QuestionsArray = {QuestionsArray} StateArray = {StateArray} Handlers = {Handlers} />  

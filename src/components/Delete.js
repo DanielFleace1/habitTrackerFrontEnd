@@ -11,15 +11,18 @@ const clone = require('rfdc')()
 const Delete = ({handleDeleteDateChange,handleDeleteSubmit,deleteDate}) => {
 
   return(
-    <div >
+
         <form onSubmit={handleDeleteSubmit}>
-        Select Date to Delete:    
-        <LocalizationProvider   dateAdapter={AdapterDateFns}>
-            <DatePicker  label="Select Date to edit or delete values:" value = {deleteDate} onChange={handleDeleteDateChange} renderInput={(params) => <TextField  {...params} />}/>
+        <div className="deleteContainer">
+          <div className="deleteTitle">Select date to delete</div>
+          <LocalizationProvider   dateAdapter={AdapterDateFns}>
+            <DatePicker  value = {deleteDate} onChange={handleDeleteDateChange} renderInput={(params) => <TextField  {...params} />}/>
         </LocalizationProvider> 
         <button type="submit">  Delete </button> 
+        </div> 
         </form>
-    </div>
+        
+    
   )
 }
 

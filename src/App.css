@@ -7,7 +7,8 @@
   font-family: Helvetica Neue;
   height: 16vh;
   /* //border-style: solid; */
-  border-bottom: 2px solid rgb(177, 175, 175)
+  border-bottom: 2px solid rgb(177, 175, 175);
+  width: 100vw;
 }
 .titleText{
   height: 4vh;
@@ -16,8 +17,20 @@
 }
 .datePicker{
   display: flex;
-  justify-content: center;
   margin-top: 23px;
+  flex-direction: row;
+  justify-content: center ;
+  align-items: center;
+  /* margin-left: 5%; */
+}
+
+.subDatePicker{
+  display: flex;
+  margin-top: 23px;
+  flex-direction: row;
+  justify-content: flex-start ;
+  align-items: center;
+  gap: 6%; 
 }
 /* End title section */
 
@@ -67,12 +80,17 @@
 .table{
   /* background-color:white;  */
   /* border-style: solid; */
-  
+
   margin-right: 20px;
   border-left: solid rgb(226, 226, 226);
   padding-left: 20px;
-  
-  
+  overflow: hidden  ;
+  width: 100%;
+}
+
+.smallTableDiv{
+  overflow:scroll;
+  /* background-color: aqua; */
 }
 
 .tableTitle{
@@ -85,15 +103,16 @@
 }
 
 th{
-  height: 1vh;
+  /* height: 1vh; */
   font-family: 'Courier New', Courier, monospace;
 }
 
 td{
   text-align: center;
-  width: 10vw;
+    /* width: 10vw; */
   /* border-style: solid; */
 }
+
 
 .tableButton{
   width: 6.5em;
@@ -138,12 +157,29 @@ td{
   }
 
 /*End Notes Styling*/
+
 /* Start Edit & Delete Styling */
 .editDelete{
   display: flex;
   flex-direction: column;
   margin-top: 10px;
 }
+
+  /* Start Delete Styling */
+  .deleteContainer{
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    flex-direction: column;
+    width: 18vw;
+    margin-top: 10px;
+  }
+
+  /* End Delete Styling */
+
+/* Start Edit & Delete Styling */
+
+
+
 
 
 /* .numberPicker{

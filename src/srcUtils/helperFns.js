@@ -24,9 +24,12 @@ const displayfilter = (arry) => {
       let a = obj.Date.split('/').join('');
       let b = format(new Date, 'yyyy/MM/dd')
           b = b.split('/').join('')-7;
+      let c = format(new Date, 'yyyy/MM/dd')
+          c = c.split('/').join('');
           // console.log('a',a,'type of a is', typeof(a))
           // console.log('b',b, 'type of a is', typeof(b))
-      return (a > b )
+          // console.log('c',c, 'type of a is', typeof(c))
+      return (a > b && a <= c)
     })
   )
 }
