@@ -34,9 +34,6 @@ const EditDelete  = ({AppData,setAppData, deleteDate, handleDeleteDateChange, ha
 
 
 
-        {/* <LocalizationProvider   dateAdapter={AdapterDateFns}>
-            <DatePicker  label="Select Date to edit or delete values:" onChange={()=>{console.log('change');}} renderInput={(params) => <TextField  {...params} />}/>
-        </LocalizationProvider> */}
 
 
 
