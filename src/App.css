@@ -138,6 +138,12 @@ td{
   }
 
 /*End Notes Styling*/
+/* Start Edit & Delete Styling */
+.editDelete{
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
 
 
 /* .numberPicker{

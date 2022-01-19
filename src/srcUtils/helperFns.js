@@ -5,13 +5,8 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import setDate from 'date-fns/setDate';
 import { el } from 'date-fns/locale';
 
-const checkEntry = (array, value) => {
-  return array.findIndex(element => {
-    console.log('element',element)
-    console.log('value',value)
-    return element.Date ===  value
-  }
-  )
+const checkEntry = (arry, value) => {
+  return arry.findIndex(element => element.Date ===  value)
 }
 
 // sort app data in ascending order 
@@ -25,9 +20,12 @@ const sortByDate = (c,d) =>{
 const displayfilter = (arry) => {
   return( 
     arry.filter((obj) => {
+      //console.log('obj',obj)
       let a = obj.Date.split('/').join('');
       let b = format(new Date, 'yyyy/MM/dd')
           b = b.split('/').join('')-7;
+          // console.log('a',a,'type of a is', typeof(a))
+          // console.log('b',b, 'type of a is', typeof(b))
       return (a > b )
     })
   )

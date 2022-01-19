@@ -7,9 +7,9 @@ import Table from './components/Table';
 import helpers from './srcUtils/helperFns'
 import serverFunctions from './srcUtils/serverFunctions';
 import { format, set } from 'date-fns'
-import NumberPicker from "react-widgets/NumberPicker";
+// import NumberPicker from "react-widgets/NumberPicker";
+// import DeleteButton from './components/Delete';
 
-import helperFns from './srcUtils/helperFns';
 
 
 const clone = require('rfdc')()
@@ -35,9 +35,11 @@ function App() {
   const [AppData,setAppData] = useState(undefined)
   const [userID,setUserID] = useState('Daniel Fleace') // for login ??
   const [date, setDate] = useState(format(new Date, 'yyyy/MM/dd'))
+  const [ deleteDate, setDeleteDate] = useState(format(new Date,"yyyy/MM/dd"))  
+
   //Handler functions 
   const handleSubmit = (e) => { 
-    const baseURL = 'http://localhost:3001/Stats';   
+    
     e.preventDefault()
     const statsObj ={
       Sleep: sleep ,
@@ -141,6 +143,28 @@ function App() {
      console.log('b is',b)
  }
 
+  const handleDeleteDateChange = (newValue) => {
+    setDeleteDate(format(newValue,"yyyy/MM/dd"))
+  }
+
+  const handleDeleteSubmit = (e) => {
+    e.preventDefault()    
+    if(window.confirm(' Are you sure you want to delete?')){  
+        const index = AppData.findIndex(element => element.Date === deleteDate)
+        const backEndid = AppData[index].id
+
+        serverFunctions.remove(backEndid)
+          .then((res) => {
+            let AppDataClone = clone(AppData)
+            AppDataClone.splice(index,index)   
+            setAppData(AppDataClone)
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+    }
+  }
+
 
 
 
@@ -160,11 +184,17 @@ function App() {
   const StateArray = [sleep,focusW,exercise,NGs,workRating, healthRating, overall,posNotes,negNotes]
   const TableArray = ['Date','Sleep','Work','Exercise','NGs','workRating','healthRating','overall' ,'posNotes','negNotes']
 
+  //Front End URL
+  //const baseUL = 'http://localhost:3001/stats'
+
+  //BackEnd URL
+  const baseURL = 'http://localhost:3001/api/data'
+
+
   // Effects
   useEffect(() => {
-    axios.get('http://localhost:3001/api/data')
+    axios.get(baseURL)
       .then(response => {
-        console.log(response.data)
         setAppData(response.data)
       })
   }, [])
@@ -183,7 +213,8 @@ function App() {
         <div><button className='submitButton' type="submit">Submit</button></div>
         <div><button type ="reset" className ='submitButton' onClick = {handleClearAllInputs} > Reset Form & Date </button></div>
       </form>
-      <Table className="table" AppData={AppData} TableArray={TableArray} handleTableChange={handleTableChange} date = {date} />
+      <Table className="table" AppData={AppData} TableArray={TableArray} handleTableChange={handleTableChange} date = {date} deleteDate ={deleteDate} handleDeleteDateChange = {handleDeleteDateChange} handleDeleteSubmit = {handleDeleteSubmit} />
+    
       </div>
       
       

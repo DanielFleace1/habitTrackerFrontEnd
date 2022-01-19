@@ -1,10 +1,13 @@
 
 import { format, isYesterday, set } from 'date-fns'
 import helperFns from '../srcUtils/helperFns'
+
 import TableNotes from './TableNotes'
+import EditDelete from './EditDelete'
 const clone = require('rfdc')()
 
-const Table = ({AppData,TableArray,handleTableChange}) => {
+
+const Table = ({AppData,TableArray,handleTableChange,setAppData, deleteDate, handleDeleteDateChange, handleDeleteSubmit}) => {
     //whats a better way to do this??
     if(AppData === undefined){
         return(<div></div>)
@@ -26,7 +29,6 @@ const Table = ({AppData,TableArray,handleTableChange}) => {
                 </tr>
                 {filteredADC.map((stat,index) => {return(
                     <tr key = {index}>
-                        {/* {console.log(stat)} */}
                         {TableArray.map((element ,index2) => {
                             if(element !== 'posNotes' && element !== 'negNotes'){
                                 return(
@@ -44,6 +46,9 @@ const Table = ({AppData,TableArray,handleTableChange}) => {
                 </tbody>
             </table>  
        <TableNotes AppData={AppData}/>
+
+
+       <EditDelete  AppData = {AppData} setAppData ={setAppData} deleteDate ={deleteDate} handleDeleteDateChange = {handleDeleteDateChange} handleDeleteSubmit = {handleDeleteSubmit} />
         </div> 
         ) 
     }  
