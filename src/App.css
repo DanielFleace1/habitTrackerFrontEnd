@@ -159,7 +159,7 @@ td{
 /*End Notes Styling*/
 
 /* Start Edit & Delete Styling */
-.editDelete{
+.EditDelete{
   display: flex;
   flex-direction: column;
   margin-top: 10px;

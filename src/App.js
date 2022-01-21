@@ -7,6 +7,7 @@ import Table from './components/Table';
 import helpers from './srcUtils/helperFns'
 import serverFunctions from './srcUtils/serverFunctions';
 import { format, set } from 'date-fns';
+import Resubmission from './dialogs/resubmission';
 // import NumberPicker from "react-widgets/NumberPicker";
 // import DeleteButton from './components/Delete';
 
@@ -37,8 +38,9 @@ function App() {
   const [date, setDate] = useState(format(new Date, 'yyyy/MM/dd'))
   const [ deleteDate, setDeleteDate] = useState(format(new Date,"yyyy/MM/dd"))
   const [submissionAlert, setSubmissionAlert] = useState(null)
-  
-
+  const [openDeleteDia,setOpenDeleteDia] = useState(false)
+  const [openResub, setOpenResub] = useState(false)
+ 
   //Handler functions 
   const handleSubmit = (e) => { 
     
@@ -59,33 +61,14 @@ function App() {
     const stat = helpers.checkEntry(AppData,statsObj.Date) 
     // Entry For Date already exists 
     if(stat > -1){
-      if(window.confirm('You have already submitted an entry for today. Click continue to overwrite all data with listed data now')){
-        serverFunctions.update(AppData[stat].id,statsObj)
-          .then(response =>{
-            setAppData( AppData.map(stat => stat.Date !== statsObj.Date ? stat : response.data) )
-            //setPersons(persons.map(prsn=> prsn.id !== person.id ? prsn : response.data))
-            
- 
-            
-            setNewSleep('')
-            setFocusW('')
-            setExercise('')
-            setNGs('')
-            setWorkRating('')
-            setHealthRating('')
-            setOverall('')
-            setPosNotes('')
-            setNegNotes('')
-          })
-      }
-    }
+        setOpenResub(true)
+  }
     // New Entry 
     else{
      serverFunctions.create(statsObj)
       .then(response => { 
         setSubmissionAlert('success')
         setTimeout(() => {
-          console.log('inside!')
           setSubmissionAlert(null)
           }, 3000)
         setAppData(AppData.concat(response.data));
@@ -103,6 +86,10 @@ function App() {
   }
 
   const handleClearAllInputs = () => {
+    setSubmissionAlert('info')
+    setTimeout(() => {
+      setSubmissionAlert(null)
+      }, 3000)
     setNewSleep('')
     setFocusW('')
     setExercise('')
@@ -145,39 +132,66 @@ function App() {
   const handleDateChange = (newValue) => {
     setDate(format(newValue, 'yyyy/MM/dd'))
   }
-
    const handleTableChange = (a,b) => {
-     console.log('a is',a)
-     console.log('b is',b)
  }
-
   const handleDeleteDateChange = (newValue) => {
     setDeleteDate(format(newValue,"yyyy/MM/dd"))
   }
-
   const handleDeleteSubmit = (e) => {
     e.preventDefault()    
-    if(window.confirm(' Are you sure you want to delete?')){  
         const index = AppData.findIndex(element => element.Date === deleteDate)
         const backEndid = AppData[index].id
-
         serverFunctions.remove(backEndid)
           .then((res) => {
             let AppDataClone = clone(AppData)
-            AppDataClone.splice(index,index)   
+            AppDataClone.splice(index,1)   
             setAppData(AppDataClone)
+            setOpenDeleteDia(false)
           })
           .catch((err) => {
             console.log(err)
           })
-    }
   }
-
-
-
-
-
-
+  const handleClickOpen =  () => {
+    setOpenDeleteDia(true)
+  }  
+  const handleClose = () => {
+    console.log('close')
+    setOpenDeleteDia(false)
+    setOpenResub(false)
+  } 
+  const handleResub = () => {
+    console.log('resub')
+    setOpenResub(false)
+    console.log('resub')
+    const statsObj ={
+      Sleep: sleep ,
+      Work: focusW ,
+      Exercise: exercise,
+      NGs:NGs,
+      workRating: workRating,
+      healthRating: healthRating,
+      overall: overall,
+      posNotes:posNotes,
+      negNotes:negNotes,
+      userID: userID,
+      Date: date 
+    }
+    const stat = helpers.checkEntry(AppData,statsObj.Date) 
+    serverFunctions.update(AppData[stat].id,statsObj)
+    .then(response =>{
+      setAppData( AppData.map(stat => stat.Date !== statsObj.Date ? stat : response.data) )
+      //setPersons(persons.map(prsn=> prsn.id !== person.id ? prsn : response.data))      
+      setNewSleep('')
+      setFocusW('')
+      setExercise('')
+      setNGs('')
+      setWorkRating('')
+      setHealthRating('')
+      setOverall('')
+      setPosNotes('')
+    })
+  } 
 
 
 
@@ -213,7 +227,6 @@ function App() {
   // Final  Return 
   return ( 
     <div>    
-
       <Title date = {date} handleDateChange={handleDateChange} submissionAlert = {submissionAlert}/>
       <div className='formTable'>
       <form className='Form' onSubmit={handleSubmit}>
@@ -221,13 +234,10 @@ function App() {
         <div><button className='submitButton' type="submit">Submit</button></div>
         <div><button type ="reset" className ='submitButton' onClick = {handleClearAllInputs} > Reset Form & Date </button></div>
       </form>
-      <Table className="table" AppData={AppData} TableArray={TableArray} handleTableChange={handleTableChange} date = {date} deleteDate ={deleteDate} handleDeleteDateChange = {handleDeleteDateChange} handleDeleteSubmit = {handleDeleteSubmit} />
-    
+      <Table className="table" AppData={AppData} TableArray={TableArray} handleTableChange={handleTableChange} date = {date} deleteDate ={deleteDate} handleDeleteDateChange = {handleDeleteDateChange} handleDeleteSubmit = {handleDeleteSubmit} openDeleteDia = {openDeleteDia} handleClickOpen = {handleClickOpen} handleClose = {handleClose}/>
       </div>
-      
-      
-
+      <Resubmission openResub ={openResub} handleClose = {handleClose} date = {date} handleResub={handleResub}/>
     </div>
   );
 }
-export default App;
+export default App
