@@ -8,7 +8,7 @@ import Stack from '@mui/material/Stack';
 
 
 const Title = ({date,handleDateChange,submissionAlert}) => {
-  if(submissionAlert !== null){
+  if(submissionAlert === 'success'){
     return(
       <div className="TitleC">
         <div  className="titleText"> Habit Tracker App </div>
@@ -23,6 +23,24 @@ const Title = ({date,handleDateChange,submissionAlert}) => {
       </div> 
     )
   }
+
+
+  else if(submissionAlert === 'info'){
+    return(
+      <div className="TitleC">
+        <div  className="titleText"> Habit Tracker App </div>
+        <div className="subDatePicker">   
+          <Stack sx={{height: '120', width:'36%' }} spacing={2}>
+            <Alert sx={{height: '120%' }} severity={submissionAlert}> Form & Date Reset</Alert>
+          </Stack>
+          <LocalizationProvider   dateAdapter={AdapterDateFns}>
+            <DatePicker  label="Enter Data for:" value={date} onChange={handleDateChange} renderInput={(params) => <TextField  {...params} />}/>
+          </LocalizationProvider>
+        </div>
+      </div> 
+    )
+  }
+
   else {
     return(
       <div className="TitleC">

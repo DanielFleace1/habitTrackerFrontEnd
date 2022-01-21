@@ -3,7 +3,7 @@ import TableNotes from './TableNotes'
 import EditDelete from './EditDelete'
 const clone = require('rfdc')()
 
-const Table = ({AppData,TableArray,handleTableChange,setAppData, deleteDate, handleDeleteDateChange, handleDeleteSubmit}) => {
+const Table = ({AppData,TableArray,handleTableChange,setAppData, deleteDate, handleDeleteDateChange, handleDeleteSubmit, openDeleteDia, handleClickOpen,handleClose}) => {
     //whats a better way to do this??
     if(AppData === undefined){
         return(<div></div>)
@@ -46,7 +46,7 @@ const Table = ({AppData,TableArray,handleTableChange,setAppData, deleteDate, han
        <TableNotes AppData={AppData}/>
 
 
-       <EditDelete  AppData = {AppData} setAppData ={setAppData} deleteDate ={deleteDate} handleDeleteDateChange = {handleDeleteDateChange} handleDeleteSubmit = {handleDeleteSubmit} />
+       <EditDelete  AppData = {AppData} setAppData ={setAppData} deleteDate ={deleteDate} handleDeleteDateChange = {handleDeleteDateChange} handleDeleteSubmit = {handleDeleteSubmit} openDeleteDia = {openDeleteDia} handleClickOpen = {handleClickOpen} handleClose = {handleClose} />
         </div> 
         ) 
     }  

@@ -6,18 +6,18 @@ import Switch from '@mui/material/Switch';
 
 
 
-const EditDelete  = ({AppData,setAppData, deleteDate, handleDeleteDateChange, handleDeleteSubmit}) => {
+const EditDelete  = ({AppData,setAppData, deleteDate, handleDeleteDateChange, handleDeleteSubmit, openDeleteDia, handleClickOpen, handleClose}) => {
   const [edit,setEdit] = useState(true)
   
   const handleEditToggle = () => {
     setEdit(edit ? false : true );
   }
 
-  if(edit){
+  if(edit === false){
     return(
       <div className ="EditDelete" >
-        <div> Edit <Switch onChange={handleEditToggle}/> Delete </div>
-        <Edit AppData = {AppData}/>
+        <div> Switch to toggle delete</div> <Switch onChange={handleEditToggle}/> 
+        {/* <Edit AppData = {AppData}/> */}
       </div>
     )
   }
@@ -25,8 +25,8 @@ const EditDelete  = ({AppData,setAppData, deleteDate, handleDeleteDateChange, ha
   else {
     return(
       <div className ="EditDelete" >
-        <div> Edit <Switch onChange={handleEditToggle}/> Delete </div>
-        <Delete AppData = {AppData} setAppData ={setAppData} deleteDate = {deleteDate} handleDeleteSubmit = {handleDeleteSubmit} handleDeleteDateChange = {handleDeleteDateChange} />
+        <div> Switch to toggle delete</div> <Switch onChange={handleEditToggle}/>  
+        <Delete AppData = {AppData} setAppData ={setAppData} deleteDate = {deleteDate} handleDeleteSubmit = {handleDeleteSubmit} handleDeleteDateChange = {handleDeleteDateChange} openDeleteDia = {openDeleteDia} handleClickOpen = {handleClickOpen} handleClose = {handleClose} />
       </div>
     )
   }
