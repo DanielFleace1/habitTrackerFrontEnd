@@ -2,25 +2,15 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import './App.css';
 import Title  from './components/Title';
+import NullTable from './components/NullTable';
 import Questions from './components/Questions';
 import Table from './components/Table';
 import helpers from './srcUtils/helperFns'
 import serverFunctions from './srcUtils/serverFunctions';
 import { format, set } from 'date-fns';
 import Resubmission from './dialogs/resubmission';
-// import NumberPicker from "react-widgets/NumberPicker";
-// import DeleteButton from './components/Delete';
-
-
 
 const clone = require('rfdc')()
-
-
-// import AdapterDateFns from '@mui/lab/AdapterDateFns';
-// import LocalizationProvider from '@mui/lab/LocalizationProvider';
-// import setDate from 'date-fns/setDate';
-
-
 function App() {
   //base URL
   // State
@@ -34,16 +24,52 @@ function App() {
   const [posNotes,setPosNotes] = useState('')
   const [negNotes,setNegNotes] = useState('')
   const [AppData,setAppData] = useState(undefined)
-  const [userID,setUserID] = useState('Daniel Fleace') // for login ??
   const [date, setDate] = useState(format(new Date, 'yyyy/MM/dd'))
   const [ deleteDate, setDeleteDate] = useState(format(new Date,"yyyy/MM/dd"))
   const [submissionAlert, setSubmissionAlert] = useState(null)
   const [openDeleteDia,setOpenDeleteDia] = useState(false)
   const [openResub, setOpenResub] = useState(false)
- 
+  const [username, setUsername] = useState('')
+  const [password,setPassword] = useState('')
+  const [user, setUser] = useState(null)
+  
   //Handler functions 
+  const handleUserChange = (e) => {
+    setUsername(e.target.value)
+  }
+  const handlePassChange = (e) => {
+    setPassword(e.target.value)
+  }
+  const handleUserSubmit =  async (e) => {
+    e.preventDefault()
+    try{
+      const user = await serverFunctions.login({username,password})
+      serverFunctions.setToken(user.token)
+      setUser(user)
+      window.localStorage.setItem(
+        'loggedOn', JSON.stringify(user)
+      ) 
+      let data = await serverFunctions.getAll()
+      setAppData(data)
+      setUsername('')
+      setPassword('')  
+
+      
+
+
+    }
+    catch(exception){
+      console.log(exception)
+      setSubmissionAlert('loginError')
+      setTimeout(() => {
+        setSubmissionAlert(null)
+        }, 3000)
+    }
+
+  }
+
+  //-----------//
   const handleSubmit = (e) => { 
-    
     e.preventDefault()
     const statsObj ={
       Sleep: sleep ,
@@ -55,23 +81,26 @@ function App() {
       overall: overall,
       posNotes:posNotes,
       negNotes:negNotes,
-      userID: userID,
-      Date: date 
+      userId:user.userId,
+      Date: date,
     }
+    // Check app data to see if data exists. [ No dual entry problem because only user data is saved in app data]
     const stat = helpers.checkEntry(AppData,statsObj.Date) 
     // Entry For Date already exists 
     if(stat > -1){
-        setOpenResub(true)
+      setOpenResub(true)
   }
     // New Entry 
     else{
+
      serverFunctions.create(statsObj)
       .then(response => { 
         setSubmissionAlert('success')
         setTimeout(() => {
           setSubmissionAlert(null)
           }, 3000)
-        setAppData(AppData.concat(response.data));
+
+        setAppData(AppData.concat(response));
         setNewSleep('')
         setFocusW('')
         setExercise('')
@@ -82,9 +111,11 @@ function App() {
         setPosNotes('')
         setNegNotes('')
        })
+       .catch((err) => {
+         console.log('catch error in serverfunctions create app:',err)
+       })
     }
   }
-
   const handleClearAllInputs = () => {
     setSubmissionAlert('info')
     setTimeout(() => {
@@ -101,7 +132,6 @@ function App() {
     setNegNotes('')  
     setDate(format(new Date, 'yyyy/MM/dd'))
   }
-
   const handleSleepChange = (e) => {
     setNewSleep(e.target.value);
   }
@@ -146,6 +176,7 @@ function App() {
             let AppDataClone = clone(AppData)
             AppDataClone.splice(index,1)   
             setAppData(AppDataClone)
+            setDeleteDate(format(new Date,"yyyy/MM/dd"))
             setOpenDeleteDia(false)
           })
           .catch((err) => {
@@ -156,14 +187,12 @@ function App() {
     setOpenDeleteDia(true)
   }  
   const handleClose = () => {
-    console.log('close')
     setOpenDeleteDia(false)
     setOpenResub(false)
   } 
+  
   const handleResub = () => {
-    console.log('resub')
     setOpenResub(false)
-    console.log('resub')
     const statsObj ={
       Sleep: sleep ,
       Work: focusW ,
@@ -174,14 +203,17 @@ function App() {
       overall: overall,
       posNotes:posNotes,
       negNotes:negNotes,
-      userID: userID,
       Date: date 
     }
+    // Get ID by index of entry with same Date. 
     const stat = helpers.checkEntry(AppData,statsObj.Date) 
+    console.log('app data to be replaced', AppData[stat])
+    console.log('stat id', AppData[stat].id)
     serverFunctions.update(AppData[stat].id,statsObj)
+
     .then(response =>{
+      console.log('response',response)
       setAppData( AppData.map(stat => stat.Date !== statsObj.Date ? stat : response.data) )
-      //setPersons(persons.map(prsn=> prsn.id !== person.id ? prsn : response.data))      
       setNewSleep('')
       setFocusW('')
       setExercise('')
@@ -190,16 +222,16 @@ function App() {
       setHealthRating('')
       setOverall('')
       setPosNotes('')
+      setNegNotes('')
+      setDate(format(new Date, 'yyyy/MM/dd'))
     })
   } 
-
-
-
-
-
-
-
-
+  const handleLogout = () => {
+    setUser(null)
+    setDeleteDate(format(new Date,"yyyy/MM/dd"))
+    setDate(format(new Date,"yyyy/MM/dd"))
+    window.localStorage.clear()
+  }
   // Arrays
   const QuestionsArray = ['Hours of Sleep?', 'Focused Work?', 'Did you exercise?' , 'Did you hit nutrional goals?','Work: 0-10?', 'Health: 0 - 10?', 'Overall day: 0-10?', 'Positive notes about day?', 'Negative notes about day?']
   const Handlers = [handleSleepChange,handleFocusWchange, handleExerciseChange, handleNutrionalChange, handleWorkChange, handleHealthChange, handleOverallChange, handelPositiveNoteChange, handleNegativeNoteChange]
@@ -208,36 +240,55 @@ function App() {
 
   //Front End URL
   //const baseUL = 'http://localhost:3001/stats'
-
   //BackEnd URL
-  const baseURL = 'http://localhost:3001/api/data'
 
-
-  // Effects
   useEffect(() => {
-    axios.get(baseURL)
-      .then(response => {
-        setAppData(response.data)
-      })
+    const loggedUserJSON = window.localStorage.getItem('loggedOn')
+    if (loggedUserJSON) {
+      const user = JSON.parse(loggedUserJSON)
+      setUser(user)
+      serverFunctions.setToken(user.token)
+      serverFunctions.getAll()
+        .then((res) => {
+          setAppData(res)
+        })
+    }
   }, [])
-
-
 
 
   // Final  Return 
   return ( 
     <div>    
-      <Title date = {date} handleDateChange={handleDateChange} submissionAlert = {submissionAlert}/>
+      <Title date = {date} handleDateChange={handleDateChange} submissionAlert = {submissionAlert} username={username} password={password} handleUserChange={handleUserChange} handlePassChange={handlePassChange} handleUserSubmit={handleUserSubmit} user = {user} handleLogout={handleLogout}/>
       <div className='formTable'>
       <form className='Form' onSubmit={handleSubmit}>
         <Questions QuestionsArray = {QuestionsArray} StateArray = {StateArray} Handlers = {Handlers} />  
+      
+        {
+        user === null ?
+        <NullTable/>:
+        <div>
         <div><button className='submitButton' type="submit">Submit</button></div>
         <div><button type ="reset" className ='submitButton' onClick = {handleClearAllInputs} > Reset Form & Date </button></div>
+        </div>
+        }
+       
       </form>
-      <Table className="table" AppData={AppData} TableArray={TableArray} handleTableChange={handleTableChange} date = {date} deleteDate ={deleteDate} handleDeleteDateChange = {handleDeleteDateChange} handleDeleteSubmit = {handleDeleteSubmit} openDeleteDia = {openDeleteDia} handleClickOpen = {handleClickOpen} handleClose = {handleClose}/>
+      {
+        user === null ?
+        <NullTable/>:
+        <Table className="table" AppData={AppData} TableArray={TableArray} handleTableChange={handleTableChange} date = {date} deleteDate ={deleteDate} handleDeleteDateChange = {handleDeleteDateChange} handleDeleteSubmit = {handleDeleteSubmit} openDeleteDia = {openDeleteDia} handleClickOpen = {handleClickOpen} handleClose = {handleClose}/>
+      } 
       </div>
       <Resubmission openResub ={openResub} handleClose = {handleClose} date = {date} handleResub={handleResub}/>
     </div>
   );
 }
 export default App
+
+
+
+// {user === null ?
+//   loginForm() :
+//   noteForm()
+// }

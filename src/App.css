@@ -180,7 +180,11 @@ td{
 
 /* Start Edit & Delete Styling */
 
-
+/*Start Login Styling */
+.Login{
+  background-color: blue;
+}
+/*Start End Styling *
 
 
 
@@ -188,8 +192,6 @@ td{
   height: 100vh;
   /* margin-left: 1000px; 
 } */
-
-
 /* .InputC{
   display: flex ;
   size: 10vw;
