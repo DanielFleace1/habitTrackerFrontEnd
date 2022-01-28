@@ -12,7 +12,6 @@ import Resubmission from './dialogs/resubmission';
 
 const clone = require('rfdc')()
 function App() {
-  //base URL
   // State
   const [sleep, setNewSleep] = useState('')
   const [focusW, setFocusW] = useState('')
@@ -238,9 +237,7 @@ function App() {
   const StateArray = [sleep,focusW,exercise,NGs,workRating, healthRating, overall,posNotes,negNotes]
   const TableArray = ['Date','Sleep','Work','Exercise','NGs','workRating','healthRating','overall' ,'posNotes','negNotes']
 
-  //Front End URL
-  //const baseUL = 'http://localhost:3001/stats'
-  //BackEnd URL
+ 
 
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('loggedOn')
