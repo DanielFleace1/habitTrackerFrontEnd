@@ -1,16 +1,8 @@
-import React from "react";
-
-
-
-
-
-const NullTable = () => {
-    
-    return(
-      <div >
-          Login to View Your Habit Data
-      </div> 
-    )
-  }
-
+const NullTable = () => {    
+  return(
+    <div className="nulltable" >
+      Please login to track your data and display your previous 7 days!
+    </div>   
+  )
+}
 export default NullTable

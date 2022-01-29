@@ -1,8 +1,0 @@
-1.) Make sure website is: 
-    a.) Responsive to Changes in size
-    b.) Responsive on different browsers 
-    c.) secure 
-    d.) scalable 
-
-2.) What is react - script - start and why is it giving me new output
-3.) when do i need to import react & when do i not

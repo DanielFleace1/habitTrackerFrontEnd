@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
 import './App.css';
 import Title  from './components/Title';
 import NullTable from './components/NullTable';
@@ -7,12 +6,12 @@ import Questions from './components/Questions';
 import Table from './components/Table';
 import helpers from './srcUtils/helperFns'
 import serverFunctions from './srcUtils/serverFunctions';
-import { format, set } from 'date-fns';
-import Resubmission from './dialogs/resubmission';
-
+import {format} from 'date-fns';
+import Resubmission from './components/resubmission';
 const clone = require('rfdc')()
+
 function App() {
-  // State
+  // State Hooks
   const [sleep, setNewSleep] = useState('')
   const [focusW, setFocusW] = useState('')
   const [exercise,setExercise] = useState('')
@@ -23,9 +22,9 @@ function App() {
   const [posNotes,setPosNotes] = useState('')
   const [negNotes,setNegNotes] = useState('')
   const [AppData,setAppData] = useState(undefined)
-  const [date, setDate] = useState(format(new Date, 'yyyy/MM/dd'))
-  const [ deleteDate, setDeleteDate] = useState(format(new Date,"yyyy/MM/dd"))
-  const [submissionAlert, setSubmissionAlert] = useState(null)
+  const [date, setDate] = useState(format(new Date(), 'yyyy/MM/dd'))
+  const [ deleteDate, setDeleteDate] = useState(format(new Date(),"yyyy/MM/dd"))
+  const [submissionAlert, setSubmissionAlert] = useState(null )
   const [openDeleteDia,setOpenDeleteDia] = useState(false)
   const [openResub, setOpenResub] = useState(false)
   const [username, setUsername] = useState('')
@@ -52,22 +51,15 @@ function App() {
       setAppData(data)
       setUsername('')
       setPassword('')  
-
-      
-
-
     }
     catch(exception){
-      console.log(exception)
-      setSubmissionAlert('loginError')
+
+      setSubmissionAlert('error')
       setTimeout(() => {
         setSubmissionAlert(null)
         }, 3000)
     }
-
   }
-
-  //-----------//
   const handleSubmit = (e) => { 
     e.preventDefault()
     const statsObj ={
@@ -83,7 +75,7 @@ function App() {
       userId:user.userId,
       Date: date,
     }
-    // Check app data to see if data exists. [ No dual entry problem because only user data is saved in app data]
+    // Check app data to see if date to be entered already exists. AppData is only logged in user.
     const stat = helpers.checkEntry(AppData,statsObj.Date) 
     // Entry For Date already exists 
     if(stat > -1){
@@ -91,14 +83,12 @@ function App() {
   }
     // New Entry 
     else{
-
      serverFunctions.create(statsObj)
       .then(response => { 
         setSubmissionAlert('success')
         setTimeout(() => {
           setSubmissionAlert(null)
           }, 3000)
-
         setAppData(AppData.concat(response));
         setNewSleep('')
         setFocusW('')
@@ -109,10 +99,10 @@ function App() {
         setOverall('')
         setPosNotes('')
         setNegNotes('')
-       })
-       .catch((err) => {
-         console.log('catch error in serverfunctions create app:',err)
-       })
+      })
+      .catch((err) => {
+        console.log('catch error in serverfunctions create app:',err)
+      })
     }
   }
   const handleClearAllInputs = () => {
@@ -129,7 +119,7 @@ function App() {
     setOverall('')
     setPosNotes('')
     setNegNotes('')  
-    setDate(format(new Date, 'yyyy/MM/dd'))
+    setDate(format(new Date(), 'yyyy/MM/dd'))
   }
   const handleSleepChange = (e) => {
     setNewSleep(e.target.value);
@@ -140,7 +130,7 @@ function App() {
  const handleExerciseChange = (e) => {
    setExercise(e.target.value)
  }
- const handleNutrionalChange = (e) => {
+ const handleNutritionalChange = (e) => {
   setNGs(e.target.value)
   }
   const handleWorkChange = (e) => {
@@ -162,7 +152,7 @@ function App() {
     setDate(format(newValue, 'yyyy/MM/dd'))
   }
    const handleTableChange = (a,b) => {
- }
+  }
   const handleDeleteDateChange = (newValue) => {
     setDeleteDate(format(newValue,"yyyy/MM/dd"))
   }
@@ -175,7 +165,7 @@ function App() {
             let AppDataClone = clone(AppData)
             AppDataClone.splice(index,1)   
             setAppData(AppDataClone)
-            setDeleteDate(format(new Date,"yyyy/MM/dd"))
+            setDeleteDate(format(new Date(),"yyyy/MM/dd"))
             setOpenDeleteDia(false)
           })
           .catch((err) => {
@@ -189,7 +179,6 @@ function App() {
     setOpenDeleteDia(false)
     setOpenResub(false)
   } 
-  
   const handleResub = () => {
     setOpenResub(false)
     const statsObj ={
@@ -206,12 +195,8 @@ function App() {
     }
     // Get ID by index of entry with same Date. 
     const stat = helpers.checkEntry(AppData,statsObj.Date) 
-    console.log('app data to be replaced', AppData[stat])
-    console.log('stat id', AppData[stat].id)
     serverFunctions.update(AppData[stat].id,statsObj)
-
     .then(response =>{
-      console.log('response',response)
       setAppData( AppData.map(stat => stat.Date !== statsObj.Date ? stat : response.data) )
       setNewSleep('')
       setFocusW('')
@@ -222,23 +207,21 @@ function App() {
       setOverall('')
       setPosNotes('')
       setNegNotes('')
-      setDate(format(new Date, 'yyyy/MM/dd'))
+      setDate(format(new Date(), 'yyyy/MM/dd'))
     })
   } 
   const handleLogout = () => {
     setUser(null)
-    setDeleteDate(format(new Date,"yyyy/MM/dd"))
-    setDate(format(new Date,"yyyy/MM/dd"))
+    setDeleteDate(format(new Date(),"yyyy/MM/dd"))
+    setDate(format(new Date(),"yyyy/MM/dd"))
     window.localStorage.clear()
   }
   // Arrays
-  const QuestionsArray = ['Hours of Sleep?', 'Focused Work?', 'Did you exercise?' , 'Did you hit nutrional goals?','Work: 0-10?', 'Health: 0 - 10?', 'Overall day: 0-10?', 'Positive notes about day?', 'Negative notes about day?']
-  const Handlers = [handleSleepChange,handleFocusWchange, handleExerciseChange, handleNutrionalChange, handleWorkChange, handleHealthChange, handleOverallChange, handelPositiveNoteChange, handleNegativeNoteChange]
+  const QuestionsArray = ['Hours of sleep?', 'Focused work?', 'Did you exercise?' , 'Did you hit nutritional goals?','Work: 0-10?', 'Health: 0 - 10?', 'Overall day: 0-10?', 'Positive notes about day?', 'Negative notes about day?']
+  const Handlers = [handleSleepChange,handleFocusWchange, handleExerciseChange, handleNutritionalChange, handleWorkChange, handleHealthChange, handleOverallChange, handelPositiveNoteChange, handleNegativeNoteChange]
   const StateArray = [sleep,focusW,exercise,NGs,workRating, healthRating, overall,posNotes,negNotes]
   const TableArray = ['Date','Sleep','Work','Exercise','NGs','workRating','healthRating','overall' ,'posNotes','negNotes']
-
- 
-
+  //Effects
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('loggedOn')
     if (loggedUserJSON) {
@@ -255,21 +238,19 @@ function App() {
 
   // Final  Return 
   return ( 
-    <div>    
-      <Title date = {date} handleDateChange={handleDateChange} submissionAlert = {submissionAlert} username={username} password={password} handleUserChange={handleUserChange} handlePassChange={handlePassChange} handleUserSubmit={handleUserSubmit} user = {user} handleLogout={handleLogout}/>
+    <div> 
+      <Title date = {date} handleDateChange={handleDateChange} submissionAlert = {submissionAlert} username={username} password={password} handleUserChange={handleUserChange} handlePassChange={handlePassChange} handleUserSubmit={handleUserSubmit} user = {user} handleLogout={handleLogout}/>  
       <div className='formTable'>
-      <form className='Form' onSubmit={handleSubmit}>
+      <form  onSubmit={handleSubmit}>
         <Questions QuestionsArray = {QuestionsArray} StateArray = {StateArray} Handlers = {Handlers} />  
-      
         {
         user === null ?
-        <NullTable/>:
+        <div></div>:
         <div>
         <div><button className='submitButton' type="submit">Submit</button></div>
-        <div><button type ="reset" className ='submitButton' onClick = {handleClearAllInputs} > Reset Form & Date </button></div>
+        <div><button type ="reset" className ='submitButton' onClick = {handleClearAllInputs} > Reset form & date </button></div>
         </div>
         }
-       
       </form>
       {
         user === null ?
@@ -285,7 +266,3 @@ export default App
 
 
 
-// {user === null ?
-//   loginForm() :
-//   noteForm()
-// }

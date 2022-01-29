@@ -1,8 +1,3 @@
-import React, { useState } from "react";
-import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import DatePicker from '@mui/lab/DatePicker';
-import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button'
 import  Dialog from "@mui/material/Dialog";
 import DialogActions from '@mui/material/DialogActions';
@@ -26,5 +21,4 @@ const Resubmission = ({openResub,date,handleClose,handleResub}) => {
       </div>
   )
 }
-
 export default Resubmission

@@ -8,16 +8,12 @@ import  Dialog from "@mui/material/Dialog";
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
-//const clone = require('rfdc')()
+
 
 const Delete = ({handleDeleteDateChange,handleDeleteSubmit,deleteDate, openDeleteDia,  handleClickOpen, handleClose}) => {
-  
-  
-
-
   return(
     <div className="deleteContainer">
-      <div className="deleteTitle">Select date to delete</div>
+      <div>Select date to delete</div>
       <LocalizationProvider   dateAdapter={AdapterDateFns}>
         <DatePicker  value = {deleteDate} onChange={handleDeleteDateChange} renderInput={(params) => <TextField  {...params} />}/>
       </LocalizationProvider> 
@@ -38,6 +34,5 @@ const Delete = ({handleDeleteDateChange,handleDeleteSubmit,deleteDate, openDelet
       </div> 
   )
 }
-
 export default Delete
 

@@ -1,4 +1,3 @@
-import '../App.css'
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -19,6 +18,6 @@ const ExerciseInput = ({Handlers,state,label}) => {
         </Select>
       </FormControl>
     </div>
-    )
-  }
+  )
+}
 export default ExerciseInput

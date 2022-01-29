@@ -1,27 +1,23 @@
-import React from "react";
-import '../App.css';
 const Login = ({handleUserSubmit,handleUserChange,handlePassChange,username,password, user, handleLogout}) => {
   
   if(user === null){
   return(
     <form  onSubmit={handleUserSubmit}>
-    <div>Enter Username: <input value = {username} onChange={handleUserChange}/></div>
-    <div>Enter Password: <input value = {password} onChange={handlePassChange}/></div>
-    <div><button  type="submit">Submit</button></div>
+    <div style={{ fontFamily:"'Courier New', Courier, monospace" }} >Enter Username:<input className="userNameinput" value = {username} onChange={handleUserChange}/></div>
+    <div style={{ fontFamily:"'Courier New', Courier, monospace" }}>Enter Password:<input className="passwordinput" value = {password} onChange={handlePassChange}/></div>
+    <div><button className="userSubmitButton"  type="submit">Submit</button></div>
   </form>
   )
   } 
-  
   else{
     return(
-      <div>
+      <div style={{ fontFamily:"'Courier New', Courier, monospace",marginTop:"8%" }} >
         {user.username} is logged in 
         <br/>
-        <button onClick={handleLogout}>Logout</button>
+        <button className="userLogoutButton" onClick={handleLogout}>Logout</button>
       </div>
     )
   }
-
 }
 
 export default Login
