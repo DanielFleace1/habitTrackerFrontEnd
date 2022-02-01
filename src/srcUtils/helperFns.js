@@ -12,9 +12,10 @@ const sortByDate = (c,d) =>{
 const displayfilter = (arry) => {
   return( 
     arry.filter((obj) => {
+      var today = new Date();
       let a = obj.Date.split('/').join('');
-      let b = format(new Date, 'yyyy/MM/dd')
-          b = b.split('/').join('')-7;
+      let b = new Date(today.getFullYear(), today.getMonth(), today.getDate()-7);
+          b = format(b,'yyyy/MM/dd').split('/').join('')
       let c = format(new Date, 'yyyy/MM/dd')
           c = c.split('/').join('');
       return (a > b && a <= c)
