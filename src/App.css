@@ -1,20 +1,30 @@
-
 /* Title/top Section  */
 .TitleC{
   text-align: center;
   background-color: rgb(29 161 242); 
   color: white;
-  height: 16vh;
+  height: 20vh;
   border-bottom: 2px solid rgb(177, 175, 175);
   width: 100vw;
 }
 .titleText{
-  height: 4vh;
-  font-size: 4vh;
   text-decoration: underline;
   font-family:Trebuchet MS, sans-serif;
   font-weight: bold;
+  font-size: clamp(.75rem, 0.5rem + 2.2vw,2.5vw);  
 }
+
+@media screen and (max-height: 380px) {
+  .titleText {
+    color:olive;
+    font-size: clamp(0rem, 0.1rem + 1.8vw,2.5vw);  
+  }
+}
+
+
+
+
+
 
 .titleSecondRow{
   display: flex;
@@ -40,10 +50,40 @@
 }
 
 .userNameinput{
+  
   width: 10.48vw;
   margin-top: .5%;
   margin-left: .8%;
-}
+  /* height: 1.5vh; */
+} 
+
+@media screen and (max-height: 720px) {
+  .userNameinput {
+    color: olive;
+    height:1.5vh ;
+    width: 10.48vw;
+    margin-top: .5%;
+    margin-left: .8%;
+  }
+
+  .passwordinput{
+    color: olive;
+    height:1.5vh ;
+    width: 10.48vw;
+    margin-top: .5%;
+    margin-left: .8%;
+  }
+
+  .userSubmitButton{
+    width: 19vw;
+    margin-top: 1%;
+    font-family:"'Courier New', Courier, monospace";
+    color: rgb(29 161 242);
+    height:2.8vh ;
+  }
+
+} 
+
 
 .passwordinput{
   width: 10.48vw;

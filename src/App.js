@@ -240,7 +240,7 @@ function App() {
   return ( 
     <div> 
       <Title date = {date} handleDateChange={handleDateChange} submissionAlert = {submissionAlert} username={username} password={password} handleUserChange={handleUserChange} handlePassChange={handlePassChange} handleUserSubmit={handleUserSubmit} user = {user} handleLogout={handleLogout}/>  
-      <div className='formTable'>
+      {/* <div className='formTable'>
       <form  onSubmit={handleSubmit}>
         <Questions QuestionsArray = {QuestionsArray} StateArray = {StateArray} Handlers = {Handlers} />  
         {
@@ -258,7 +258,7 @@ function App() {
         <Table className="table" AppData={AppData} TableArray={TableArray} handleTableChange={handleTableChange} date = {date} deleteDate ={deleteDate} handleDeleteDateChange = {handleDeleteDateChange} handleDeleteSubmit = {handleDeleteSubmit} openDeleteDia = {openDeleteDia} handleClickOpen = {handleClickOpen} handleClose = {handleClose}/>
       } 
       </div>
-      <Resubmission openResub ={openResub} handleClose = {handleClose} date = {date} handleResub={handleResub}/>
+      <Resubmission openResub ={openResub} handleClose = {handleClose} date = {date} handleResub={handleResub}/> */}
     </div>
   );
 }

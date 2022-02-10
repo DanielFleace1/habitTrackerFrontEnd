@@ -1,10 +1,10 @@
 import axios from 'axios'
 //Front End URL
-//const baseURL = 'http://localhost:3001/stats'
+const baseURL = 'http://localhost:3001/stats'
 //BackEnd URL
 //const baseURL = 'http://localhost:3001/'
 // Heroku// production build
-const baseURL = '/'
+//const baseURL = '/'
 let token = null
 const setToken = (newToken) =>{
   token = (`bearer ${newToken}`)
