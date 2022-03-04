@@ -1,0 +1,114 @@
+/* -------Fonts-------- */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+/* -------Media query template-------- */
+/* @media screen and (max-width: 992px) {
+  body {
+    background-color: blue;
+  }
+} */
+/* -------Home Page-------- */
+.homePageParent{
+    display: block;
+}
+.navBarContainer{
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0px;
+    background-color: #fff;
+    z-index: 1000;
+    width: 100vw;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1300px;
+    height: 9vh;
+}
+.navBarTop{
+    display: flex;
+    flex-direction: row;
+    padding-top: .5%;
+    align-items: center;
+}
+.navBarTopTitle{
+    width: 13%;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Noto Sans', sans-serif;
+    color: royalblue;
+    font-size: 50px;
+    font-weight: bolder;
+}
+
+.navBarTopFill{
+    width: 47vw;
+}
+.navBarTopFill2{
+    width: 65vw;
+    height: 100%
+}
+.navBarTopInfo{
+    text-decoration: none;
+    font-family: 'Noto Sans', sans-serif;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    padding-top: 15px;
+    width: 10%;
+    /* white-space: nowrap; */
+    margin-left: auto;
+    margin-right: auto; 
+}
+
+.navBarTopInfo:hover{
+    color: royalblue;
+}
+
+.navBarTopBtn{
+    padding: 0;
+    width: 50px;
+    border: 0;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    outline: 0;
+    font-size: 40px;
+    padding-top: 15px;
+}
+.navBarBtm{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    width: 100vw;
+    align-items: left   ;
+    background-color: white;
+
+    color: lightgray;
+    border-bottom: solid;
+}
+.navBarBtmInfo{
+    width: 100vw;
+    text-decoration: none;
+    font-family: 'Noto Sans', sans-serif;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    padding-top: 15px;
+    width: 20%;
+
+    /* white-space: nowrap; */
+
+
+}
+
+
+/*  to be delete (all below) divs for testing stick */
+.testHomePageMain1{
+    height: 92vh;
+    width: 100vw;
+
+    background-color: white;
+    text-align: center;
+}
+
+

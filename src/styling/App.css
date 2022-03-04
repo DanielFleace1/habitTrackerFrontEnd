@@ -1,0 +1,485 @@
+/* -------Fonts-------- */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+/* -------Media query template-------- */
+/* @media screen and (max-width: 992px) {
+  body {
+    background-color: blue;
+  }
+} */
+/* -------Home Page-------- */
+
+.homePageParent{
+  display: block;
+}
+.HomePageNavBar{
+  display: flex;
+  flex-direction: row;
+  position:sticky ;
+  top: 0px;
+  z-index: 1000;
+  height: 9%;
+  padding-top: .5%;  
+  background-color: #fff;
+  color: royalblue;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1300px;
+  border: solid;
+}
+
+.NavBarFill{
+  width: 47vw;
+}
+.NavBarFill2{
+  width: 65vw;
+}
+
+.HomePageNavBarTitle{
+  width: 20%;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Noto Sans', sans-serif;
+  color: royalblue;
+  font-size: 40px;
+  font-weight: bolder;
+  border: none;
+}
+.NavBarinfoWrapper{
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: .5%; 
+  /* padding-right: 20px; */
+  /* background-color: aqua; */
+}
+
+.HomePageNavBarInfo{
+  text-decoration: none;
+  font-family: 'Noto Sans', sans-serif;
+  color: black;
+  font-size: 14px;
+  font-weight: bold;
+  padding-top: 1.3%;
+  width: 10%;
+  text-align: center;
+  /* white-space: nowrap; */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.HomePageNavBarInfo:hover {
+  color:royalblue
+}
+
+.dropDownBtn{
+    padding: 0;
+    width: 50px;
+    border: 0;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    outline: 0;
+    font-size: 40px;
+}
+
+.dropDownMenuContainer{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border: solid;
+
+  
+}
+
+
+
+.homePageMain{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: static; 
+  height: 92vh;
+  font-family: 'Noto Sans', sans-serif;
+  border-bottom: solid;
+  background-color: black;
+}
+
+
+/* #hpImage{
+  width:550px;
+  height: 350px; 
+  margin-Top: 30px;
+  border: solid;
+  object-fit: cover;
+} */
+
+/* .hpTopText{
+  color: black;
+  font-family: 'Noto Sans', sans-serif;
+  position: static;
+  /* top: -80%; 8*/ 
+  /*
+  font-size: 3vw;
+  font-weight: bold;
+  color: black;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+} */
+/* .hpBtmText{
+  color: black;
+  font-family: 'Noto Sans', sans-serif;
+  position: relative;
+  bottom: 20%;
+  font-weight: bolder;
+  color: black;
+  font-size: 1.4vw;
+} */
+/* .getStartedButton{
+  background-color: rgb(70, 70, 240);
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  margin-top: 15px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1vw;
+  border-radius: 10px;
+  margin-top: 10px;
+} */
+/* .homePageMain2  { */
+  /* display: flex;
+  flex-direction: column;
+  text-align: center;*/
+  /* height: 92vh;
+  font-family: 'Noto Sans', sans-serif;
+  border-bottom:solid;
+  color: royalblue;
+  background-color: lightgray;
+} */
+
+/* .hp2Heading{
+  
+  font-family: 'Noto Sans', sans-serif;
+  text-align: center;
+  padding-top: 20px;
+  font-size: 30px;
+} */
+/* -----Home page media queries------*/
+/* 
+@media screen  and (max-width: 800px) {
+  .hpTopText{
+    font-size: 1.3vw;
+  }
+  .HomePageNavBarInfo{
+    font-size: 1.25vw;
+  }
+} */
+
+/* @media screen and (max-height: 700px), (max-width:700px) {
+  #hpImage{
+    width:550px;
+    height: 550px; 
+    margin-Top: 30px;
+  }
+  .hpTopText{
+    font-size: 16px;
+  }
+  .hpBtmText{
+    font-size: 16px;
+  }
+  .getStartedButton{
+    font-size: 12px;
+  }
+} */
+
+/* @media screen and (max-height: 610px) {
+  #hpImage{
+    width:450px;
+    height: 450px; 
+    margin-Top: 20px;
+  }
+} */
+/* @media screen and (max-width: 650px) {
+  #hpImage{
+    width:450px;
+    height: 450px; 
+  }
+  .hpTopText{
+
+  }
+} */
+/* @media screen and (max-width: 520px) {
+  #hpImage{
+    width:450px;
+    height: 450px; 
+  }
+  .hpTopText{
+    font-size: 14px;
+  }
+  .hpBtmText{
+    font-size: 14px;
+  }
+  .HomePageNavBarInfo{
+    font-size: 14px;
+  }
+} */
+@media screen and (max-width: 550px) {
+  /* #hpImage{
+    width:350px;
+    height: 350px; 
+  }
+  .hpTopText{
+    font-size: 10px;
+  }
+  .hpBtmText{
+    font-size: 10px;
+  }
+  .HomePageNavBarInfo{
+    font-size: 10px;
+  } */
+  .HomePageNavBarTitle{
+    font-size: 30px;
+  }
+}
+/* @media screen and (max-width: 420px) {
+ 
+ 
+  .getStartedButton{
+    font-size: 7px;
+  }
+}
+@media screen and (max-width: 375px) {
+ 
+  .hpBtmText{
+    font-size: 9px;
+  }
+  .getStartedButton{
+    font-size: 6px;
+  }
+} */
+ @media screen and (max-width: 350px) {
+  
+  .HomePageNavBarTitle{
+    font-size: 20px;
+  }
+/*   
+  #hpImage{
+    width:300px;
+    height: 300px; 
+  }
+  .hpTopText{
+    font-size: 6px;
+  }
+  .hpBtmText{
+    font-size: 6px;
+  }
+  .HomePageNavBarInfo{
+    font-size: 8px;
+  }
+
+  .getStartedButton{
+    font-size: 5px;
+  } */
+} 
+
+/* @media screen and (max-width: 319px) {
+  .hpTopText{
+
+  } 
+} */
+/** End Home Page/
+
+
+/* Title/top Section  */
+.TitleC{
+  text-align: center;
+  background-color: rgb(29 161 242); 
+  color: white;
+  height: 16vh;
+  border-bottom: 2px solid rgb(177, 175, 175);
+  width: 100vw;
+}
+.titleText{
+  height: 4vh;
+  font-size: 4vh;
+  text-decoration: underline;
+  font-family:Trebuchet MS, sans-serif;
+  font-weight: bold;
+}
+
+.titleSecondRow{
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 12vh;
+}
+
+.submissionAlerts{
+  width: 40vw;
+  padding-top: 1.5%; 
+}
+
+.datePicker{
+  width: 30vw;
+  padding-top: 1.5%;
+  padding-right: 10%;
+}
+
+.login{
+  width: 30vw;
+  padding-top: .5%;
+}
+
+.userNameinput{
+  width: 10.48vw;
+  margin-top: .5%;
+  margin-left: .8%;
+}
+
+.passwordinput{
+  width: 10.48vw;
+  margin-top: .5%;
+  margin-left: .8%;
+}
+
+.userSubmitButton{
+  width: 19vw;
+  margin-top: 1%;
+  font-family:"'Courier New', Courier, monospace";
+  color: rgb(29 161 242);
+}
+
+.userLogoutButton{
+  font-family:"'Courier New', Courier, monospace";
+  color: rgb(29 161 242);
+  width: 19vw;
+}
+/*End Title/Top Section */
+/*Start FormTable*/
+.formTable{
+  display: flex;
+  border-bottom: solid rgb(226, 226, 226);
+}
+  /* Start Questions*/
+  .ContainerC{
+    display: flex;
+    flex-direction: right;
+    width: 35vw;
+    margin-top: 7px;
+    margin-left: 2vh;
+  }
+  .ContainerC{
+    display: flex;
+    flex-direction: right;
+    width: 35vw;
+    margin-top: 7px;
+    margin-left: 2vh;
+  }
+  .QuestionTextC{
+    display: flex;
+    color: rgb(34, 33, 33);
+    font-family: 'Courier New', Courier, monospace;
+    width: 15vw;
+    align-items: center;
+  }
+  .Input{
+    display: flex;
+    width: 18.1vw; 
+    margin-top: 3px;
+  }
+  /* End Questions*/
+  /* Start Table*/
+  .table{
+    margin-right: 20px;
+    border-left: solid rgb(226, 226, 226);
+    padding-left: 20px;
+    overflow: hidden  ;
+    width: 100%;
+  }
+  .tableTitle{
+    color: black;
+    font-size: 4vh;
+    text-align: center;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    font-family: 'Courier New', Courier, monospace;
+  }
+  th{
+    font-family: 'Courier New', Courier, monospace;
+  }
+  td{
+    text-align: center;
+  }
+  .tableButton{
+    width: 6.5em;
+    background-color:rgb(226, 226, 226);
+  }
+  .smallTableDiv{
+    overflow:scroll;
+  }
+  .notesTableTitle{
+    text-align: center  ;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 3vh;
+    margin-top:3px;
+  }
+  .notesParent{
+    display: flex;
+    flex-direction: row;
+  }
+  .posNotes{
+    width: 30vw;
+    margin-left: 2px;
+    margin-top: 3px;
+    height: 10vh;
+    border-style: solid;
+    border-color: rgb(226, 226, 226);
+  }
+  .negNotes{
+    width: 30.4vw;
+    margin-top: 3px;
+    border-style: solid;
+    border-color: rgb(226, 226, 226);
+  }
+  .EditDelete{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+  .deleteContainer{
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    flex-direction: column;
+    width: 18vw;
+    margin-top: 10px;
+  }
+
+  /* End Table*/
+.submitButton{
+  margin-top: 10px;
+  margin-left: 1vh;
+  width: 33.2vw;
+  height: 5vh;
+  color: rgb(29 161 242);
+}
+
+.nulltable{
+  font-family:"'Courier New', Courier, monospace";
+  width: 100vw;
+  padding-top: 15%;
+  padding-left: 8%;
+  border-left: solid rgb(226, 226, 226);
+  font-size: 3vh;
+}
+/*End Form Table */
+
+
+
+
+
+
+
+
