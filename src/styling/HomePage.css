@@ -1,12 +1,6 @@
 /* -------Fonts-------- */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
-
 /* -------Media query template-------- */
-/* @media screen and (max-width: 992px) {
-  body {
-    background-color: blue;
-  }
-} */
 /* -------Home Page-------- */
 .homePageParent{
     display: block;
@@ -21,14 +15,17 @@
     width: 100vw;
     margin-left: auto;
     margin-right: auto;
-    max-width: 1300px;
-    height: 9vh;
+    /* max-width: 1300px; */
+    height: 75px;
 }
 .navBarTop{
     display: flex;
     flex-direction: row;
     padding-top: .5%;
     align-items: center;
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .navBarTopTitle{
     width: 13%;
@@ -39,9 +36,8 @@
     font-size: 50px;
     font-weight: bolder;
 }
-
 .navBarTopFill{
-    width: 47vw;
+    width: 55vw;
 }
 .navBarTopFill2{
     width: 65vw;
@@ -54,16 +50,13 @@
     font-size: 16px;
     font-weight: bold;
     padding-top: 15px;
-    width: 10%;
-    /* white-space: nowrap; */
-    margin-left: auto;
-    margin-right: auto; 
+    width: 90px;
+    margin-right: 36px; 
+    text-align: center;
 }
-
 .navBarTopInfo:hover{
     color: royalblue;
 }
-
 .navBarTopBtn{
     padding: 0;
     width: 50px;
@@ -94,21 +87,225 @@
     font-size: 16px;
     font-weight: bold;
     padding-top: 15px;
-    width: 20%;
+    width: 100%;
+}
+.hpm1Container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    height: 730px ;
+}
+.hmp1TopText{
+    color: black;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    color: black;
+    width: 500px; 
+    text-align: center;
+    margin-top: 20px;
+}
 
-    /* white-space: nowrap; */
+.getStartedButton{
+  background-color: rgb(70, 70, 240);
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  margin-top: 15px;
+  text-decoration: none;
+  font-size: 14px;
+  width: 150px;
+  border-radius: 10px;
+
+}
+
+#hpImage{
+  width:550px;
+  height: 400px; 
+  object-fit: cover;
+}
+
+.hmp1BtmText{
+    color: black;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 17px;
+    font-weight: 900;
+    color: black;
+    width: 700px; 
+    text-align: center;
+}
 
 
+.hpm2Container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    height: 825px ;
+    background-color: white; 
+}
+.hpm2TopText{
+    color:royalblue;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 40px;
+    font-weight: 900;
+    width: 500px;
+    margin-top: 75px;
+    margin-left: 125px;
+}
+.hmp2flex{
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+}
+.hpm2infoContainer{
+    margin-top: 60px;
+    height: 150px;
+    text-align: center  ;
+}
+.hpm2infoHeader{
+    font-size: 30px;
+    width: 350px;
+}
+.hpm2infoText{
+    margin-top: 10px;
+    width: 200px;
+    padding-left: 80px;
+    font-size: 20px;
+    text-align: center;
+    color: rgb(75, 74, 74);
+    height: 125px;
+}
+#hpm2pen{
+    width: 100px;
+    height: 100px;
+    margin-top: 10px;
+}
+#hpm2notebook{
+    width: 225px;
+    height: 125px;
+}
+
+#hpm2rocket{
+    width: 135px;
+    height: 135px;
+}
+
+
+
+.hpm3Container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    height: 600px ;
+    background-color: #2b2b2b;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom: solid;
+    color: white;
+}
+.hpm3Header{
+    width: 700px;
+    padding-top: 35px;
+    font-size: 25px;
+    /* border: solid; */
+    text-align: center;
+    font-size: 40px;
+    color: rgb(11, 179, 235);
+}
+.hpm3top{
+    width: 700px;
+    padding-top: 10px;
+    font-size: 25px;
+}
+.links{
+    color: rgb(11, 179, 235);
+    /* background-color: transparent; */
+    /* text-decoration: none; */
+}
+
+/* Media Queries */
+
+/* @media screen and (max-width: 930px) {
+    .navBarTopTitle{
+        font-size: 45px;
+    }
+    .navBarTopInfo{
+        font-size: 14px;
+    }
+
+    .hmp1TopText{
+        font-size: 18px;
+    }
+
+    .getStartedButton{
+        font-size: 12px;
+    }
+    
+    #hpImage{
+        width:450px;
+        height: 350px; 
+      }
+    .hmp1BtmText{
+        font-size: 16px;
+    }
+} */
+
+@media screen and (max-width: 650px) {
+    .navBarTopTitle{
+        font-size: 45px;
+    }
+    .navBarTopInfo{
+        font-size: 14px;
+    }
+
+    .hmp1TopText{
+        font-size: 18px;
+    }
+
+    .getStartedButton{
+        font-size: 12px;
+    }
+    
+    #hpImage{
+        width:400px;
+        height: 300px; 
+      }
+    .hmp1BtmText{
+        /* font-size: 14px; */
+        width: 80vw 
+    }
+}
+@media screen and (max-width: 540px) {
+    .navBarTopTitle{
+        font-size: 45px;
+    }
+    .navBarTopInfo{
+        font-size: 14px;
+    }
+
+    .hmp1TopText{
+        font-size: 18px;
+        width: 80vw;
+    }
+
+    .getStartedButton{
+        font-size: 12px;
+    }
+    
+    #hpImage{
+        width:400px;
+        height: 300px; 
+      }
+    .hmp1BtmText{
+        /* font-size: 14px; */
+        width: 80vw 
+    }
 }
 
 
 /*  to be delete (all below) divs for testing stick */
-.testHomePageMain1{
-    height: 92vh;
-    width: 100vw;
 
-    background-color: white;
-    text-align: center;
-}
 
 
