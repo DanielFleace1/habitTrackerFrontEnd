@@ -1,0 +1,89 @@
+.ManageHabitsParent{
+    display: flex;
+    flex-direction: column;
+    padding-left: 5px;
+    overflow-y: scroll;
+    /* overflow-x: scroll; */
+    font-size: 14px;
+}
+
+.manageHabitsMap1{
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 5px;
+    border-bottom: solid;
+    border-color: #e2e8f0;;
+    padding-top: 5px;
+}
+
+.manageHabitsMap2{
+    width: 100%;
+}
+
+.manageHabitsMap3{
+    width: 45%;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 35px;
+    align-items: center;
+}
+
+.manageHabitsBtn{
+    color: white;
+    background-color: royalblue;
+    width: 75px;
+    border-radius: 15%;
+    height: 25px;
+}
+
+.logoutDialogParent{
+    width: 90%;
+
+   
+   
+    min-width: 130px;
+    text-align: center;
+    margin-left: auto;
+    margin-right:auto;
+}
+
+/* Media Queries */
+@media screen and (max-width: 750px) {
+    
+    .ManageHabitsParent{
+        font-size: 12px;
+    }
+    .manageHabitsBtn{
+        font-size: 12px;
+    }
+
+}
+@media screen and (max-width: 650px) {
+    
+    .manageHabitsBtn{
+        width: 60px;
+    }
+
+}
+@media screen and (max-width: 525px) {
+    
+    .ManageHabitsParent{
+        font-size: 10px;
+    }
+    .manageHabitsBtn{
+        font-size: 10px;
+        width: 45px;
+    }
+    
+}
+
+@media screen and (max-width: 375px) {
+    .ManageHabitsParent{
+        font-size: 8px;
+    }
+    .manageHabitsBtn{
+        font-size: 8px;
+        width: 45px;
+    }
+}
+

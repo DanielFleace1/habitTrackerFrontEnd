@@ -1,0 +1,223 @@
+.viewDataParent{
+    display: flex;
+    flex-direction: column;
+}
+
+.viewDataDateConatiner{
+    border-bottom: solid;
+    border-color: #e2e8f0;
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    font-size: 12px;
+}
+
+
+.viewDateDataHeadings{
+    padding-left: 5px;
+    padding-bottom: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.viewDateDateInput{
+    font-size: 12px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-top: 12px;
+    height: 28px;
+    border-top: hidden;
+    border-left: hidden;
+    border-right: hidden;
+    border-bottom: none;
+
+}
+
+.viewDateDateInput:focus{
+    outline: none;
+}
+
+.viewDataMain{
+    display: flex;
+    flex-direction:row;
+    /* margin-left: 4px; */
+    padding-left: 4px; /* padding or margin*/
+    border-color:#e2e8f0;
+    min-height: 89vh;
+    max-height: 89vh;
+    font-size: 12px;
+    overflow-x:scroll;
+}
+
+
+
+
+.viewDataDatesColumn{
+    display: flex;
+    flex-direction: column;
+    width: 75px; 
+    font-size: 12px;
+}
+
+.viewDataDatesTitle{
+    min-height: 81.5px;
+    display: flex;
+    justify-content: center;
+    /* border-bottom: solid; */
+    align-items: center;
+    border-color:#e2e8f0;
+    box-sizing: border-box;
+    /*  */
+}
+
+.viewDatesDatesAry{
+    display: flex;
+    flex-direction: column;
+}
+
+.viewDatesDatesAryValues{
+    height: 45px;
+    width: 75px;
+    box-sizing: border-box;
+    display: flex; 
+    align-items: flex-start; 
+    border-color:#e2e8f0;
+}
+
+.viewDataDataContainer{
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+}
+
+.viewDataDataTitleContainer{
+    display: flex;
+    flex-direction: row;
+    position: sticky;
+    top: 0px;
+    background-color: white ;
+    /* border-color: #e2e8f0; */    
+}
+
+.viewDataDataTitles{
+    display: flex;
+    flex-direction: row;
+    width:200px;
+    height: 80px;
+    border-color: #e2e8f0;
+    padding-top: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 3px;
+    overflow-y: auto;
+    box-sizing: border-box;
+    justify-content: center;
+}
+
+.viewDataDataTable{
+    display: flex;
+    flex-direction: row;
+}
+
+.viewDataDataColumns{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    border-color: #e2e8f0;
+    box-sizing: border-box;
+    
+}
+
+.viewDataDataValues{
+    display: flex;
+    justify-content: center;
+    height: 45px;
+    box-sizing: border-box;
+    border-color: #e2e8f0;
+    padding-left: 5px;
+    padding-right: 5px;
+    overflow: auto;
+    align-items: flex-start
+}
+
+@media screen AND (max-width: 1000px) {
+    
+    .viewDataDataTitles{
+        width: 150px;
+    }
+    .viewDataDataColumns{
+        width: 150px;
+    }
+    .viewDataDatesColumn{
+        width: 60px;
+        /* font-size: 10px; */
+    }
+    .viewDatesDatesAryValues{
+        width: 60px;
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+
+    .viewDateDataHeadings{
+        font-size: 10px;
+    }
+
+    .viewDateDateInput{
+        font-size: 10px;
+    }
+
+    .viewDataDataTitles{
+        width: 125px;
+        font-size: 10px;
+    }
+    .viewDataDataColumns{
+        width: 125px;
+        font-size: 10px;
+
+    }
+    .viewDataDatesColumn{
+        width: 50px;
+        font-size: 10px;
+    }
+    .viewDatesDatesAryValues{
+        width: 50px;
+        font-size: 8px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+
+
+
+    .viewDateDataHeadings{
+        font-size: 6px;
+        padding-left: 0px;
+    }
+
+    .viewDateDateInput{
+        font-size: 6px;
+        /* border: solid; */
+        width: 80px;
+        margin-left: 1px;
+        margin-right: 1px;
+    }
+    .viewDataDatesColumn{
+        width: 45px;
+        font-size: 8px;
+    }
+    .viewDatesDatesAryValues{
+        width: 45px;
+        font-size: 8px;
+    }
+    .viewDataDataTitles{
+        width: 100px;
+        font-size: 8px;
+    }
+    .viewDataDataColumns{
+        width: 100px;
+        font-size: 8px;
+    }
+}

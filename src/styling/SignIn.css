@@ -1,0 +1,166 @@
+.siParent{
+    background-color: rgb(248, 245, 245);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+}
+
+.siParentAlerts{
+    position: absolute;
+    top:10%;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+.siContainer{
+    border: solid;
+    font-family: 'Noto Sans', sans-serif;
+    color: black;
+    background-color:#ffffff;
+    width: 600px;
+    overflow: hidden;
+    height: 350px; 
+    padding: 10px;
+    border: 1px solid royalblue;
+    box-shadow:  -1px 1px royalblue,
+         -2px 2px royalblue,
+         -3px 3px royalblue,
+         -4px 4px royalblue,
+         -5px 5px royalblue;
+}
+
+.siChomeLink{
+    text-decoration: none;
+    color: royalblue;
+}
+
+.siChomeLink:hover{
+    text-decoration: underline;
+    color: royalblue;
+}
+
+.siCtitle{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 60px;
+    text-decoration: none;
+    text-align: center;
+    font-weight: 600;
+    font-size: 35px;
+}
+
+.si_showPasswordEye{
+    position: relative;
+    left: 310px;
+    bottom:  75px;
+
+}
+
+.siCBtmFlex{
+    display: flex;
+    flex-direction: row;
+}
+
+.siCBtmFlex2{
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start;
+    margin-left: 100px;
+    margin-top: 7px;
+}
+
+.siCBtn{
+    background-color: rgb(70, 70, 240);
+    border: none;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    width: 340px;
+    height: 50px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.siCBtn:hover{
+    cursor: pointer;
+
+}
+
+/* .siCpasswordReq{
+    font-size: 12px;
+} */
+
+.siCtoSignUp{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end  ;
+    text-decoration: none;
+    font-size: 12px;
+    color: royalblue;
+}
+
+.siCtoSignUp:hover{
+    text-decoration: underline;
+}
+
+
+.siCtforgotPass{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end  ;
+    text-decoration: none;
+    font-size: 12px;
+    color: royalblue;
+}
+.siCtforgotPassBtn{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start ;
+    text-align: left;
+    text-decoration: none;
+    font-size: 12px;
+    color: royalblue;
+    border: hidden;
+    background-color: #ffffff;
+
+}
+.siCtforgotPassBtn:hover{
+    text-decoration: underline
+}
+
+
+@media screen and (max-width: 650px) {
+    .siContainer{
+        width: 500px;
+
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .siContainer{
+        width: 425px;
+   
+    }
+    .siCtitle{
+        font-size: 28px;
+    }
+}
+
+
+@media screen and (max-width: 475px) {
+    .siContainer{
+        width: 350px;
+        height: 350px;     
+    }
+   
+    .siCBtmFlex2{
+        width: 200px;
+    }
+
+}

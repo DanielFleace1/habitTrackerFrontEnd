@@ -12,9 +12,19 @@ const HomePage = () => {
     const [displayMenu,setDisplayMenu] = useState(false)
     const [width, setWidth] = useState(window.innerWidth);
     // HomePage Variables
-    const breakpoint = 800; 
+    const breakpoint = 1120; 
     // HomePage Handlers
     const handleMenuBtn = () => setDisplayMenu(!displayMenu)
+
+    const refreshToTop = () => {
+        // Refresh when clicking on title
+        window.refresh()
+    }
+
+    const handleGetStartedClick = () => {
+        console.log('ur mom')
+    }
+
     // HomePage Effects
     useEffect(() => {
         // effect to set up event listner to: handle window resize => UI component (nav bar info) needs to be changed with width 
@@ -47,11 +57,13 @@ const HomePage = () => {
                 {
                     width > breakpoint ?
                     <nav className="navBarTop">
-                        <Link to = "/" className="navBarTopTitle" >Habits </Link>
-                        <div className="navBarTopFill"></div> 
-                        <Link to = "/SignIn" className="navBarTopInfo" >SignIn </Link>
-                        <Link to = "/AboutApp" className="navBarTopInfo" >About App </Link>
-                        <Link to = "/AboutDev" className="navBarTopInfo" >About Devloper </Link>
+                        <Link to = "/" onClick={refreshToTop} className="navBarTopTitle" > Habits </Link>
+                        <div className="navBarTopFill"> </div> 
+                        <Link to = "/SignIn" className="navBarTopInfo" >Sign In </Link>
+                        <a href="#howItWorks" className="navBarTopInfo">About App</a>
+                        <a href="#aboutDev" className="navBarTopInfo">About Developer</a>
+                        {/* <Link to = "/AboutApp" className="navBarTopInfo" >About App </Link> */}
+                        {/* <Link to = "/AboutDev" className="navBarTopInfo" >About Devloper </Link> */}
                     </nav>
                     :
                     <nav className="navBarTop">
@@ -72,11 +84,12 @@ const HomePage = () => {
             </div>
             <div className="hpm1Container"> 
                 <div className="hmp1TopText">Create Customizable Habits to Track Personal Productivity</div>   
-               <button className='getStartedButton'> Sign Up! </button>
+               {/* <button className='getStartedButton' onClick={handleGetStartedClick}> Sign Up! </button> */}
+                    <Link to = "/SignUp" className="getStartedButton"> Sign Up !</Link>
                <img src = {photo} id="hpImage"/>
                 <div className="hmp1BtmText">  "You do not rise to the level of your goals. You fall to the level of your systems."<br/>-James Clear, Atomic Habits </div> 
             </div>
-            <div className="hpm2Container">
+            <div id="howItWorks">
                 <div className="hpm2TopText"> Here's how it works! </div>
                 <div className="hmp2flex">
                     <div className="hpm2infoContainer">
@@ -96,7 +109,7 @@ const HomePage = () => {
                     </div>               
                 </div>
             </div>
-            <div className="hpm3Container">
+            <div id="aboutDev">
                 <div className="hpm3Header"> 
                     About Developer!
                 </div>

@@ -1,4 +1,4 @@
-import helperFns from '../srcUtils/helperFns'
+import helperFns from '../../srcUtils/helperFns'
 import TableNotes from './TableNotes'
 import EditDelete from './EditDelete'
 const clone = require('rfdc')()

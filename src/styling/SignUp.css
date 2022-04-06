@@ -1,0 +1,174 @@
+/** Import **/
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css");
+/**End Import **/
+
+.suParent{
+    background-color: rgb(248, 245, 245);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.suParentAlerts{
+    position: absolute;
+    top:10%;
+    align-items: center;
+
+}
+
+.suContainer{
+    border: solid;
+    font-family: 'Noto Sans', sans-serif;
+    color: black;
+    background-color:#ffffff;
+    overflow: hidden;
+    width: 600px;
+    height: 400px; 
+    padding: 10px;
+    border: 1px solid royalblue;
+    box-shadow:  -1px 1px royalblue,
+         -2px 2px royalblue,
+         -3px 3px royalblue,
+         -4px 4px royalblue,
+         -5px 5px royalblue;
+}
+
+.suChomeLink{
+    text-decoration: none;
+    color: royalblue;
+}
+.suChomeLink:hover{
+    text-decoration: underline;
+    color: royalblue;
+}
+
+.suCtitle{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 60px;
+    text-decoration: none;
+    text-align: center;
+    font-weight: 600;
+    font-size: 35px;
+}
+
+.showPasswordEye{
+    position: relative;
+    left: 310px;
+    bottom:  75px;
+
+}
+
+.suCBtmFlex{
+    display: flex;
+    flex-direction: row;
+}
+.suCBtmFlex2{
+    display: flex;
+    flex-direction: column; 
+
+    align-items: flex-start;
+    margin-left: 100px;
+    margin-top: 7px;
+}
+
+.suCBtn{
+    background-color: rgb(70, 70, 240);
+    border: none;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    width: 340px;
+    height: 50px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.suCBtn{
+    cursor: pointer;
+}
+
+/* .suCpasswordReq{
+    font-size: 12px;
+} */
+
+.suCtoLogin{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end  ;
+    text-decoration: none;
+    font-size: 12px;
+    color: royalblue;
+}
+
+.suCtoLogin:hover{
+    text-decoration: underline;
+}
+
+
+.suCtforgotPass{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end  ;
+    text-decoration: none;
+    font-size: 12px;
+    color: royalblue;
+}
+
+.suCtforgotPassBtn{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start ;
+    text-align: left;
+    text-decoration: none;
+    font-size: 12px;
+    color: royalblue;
+    border: hidden;
+    background-color: #ffffff;
+
+}
+.suCtforgotPassBtn:hover{
+    text-decoration: underline
+}
+
+
+@media screen and (max-width: 650px) {
+    .suContainer{
+        width: 500px;
+    }
+
+    
+}
+
+@media screen and (max-width: 550px) {
+    .suContainer{
+        width: 425px;
+
+    }
+    .suCtitle{
+        font-size: 28px;
+    }
+}
+
+/*  */
+@media screen and (max-height: 500px) {
+    .suContainer{
+        height: 350px; 
+    }
+    .suCtitle{
+        font-size: 28px;
+    }
+   
+}
+@media screen and (max-height: 475px) {
+    .suContainer{
+        width: 350px; 
+    }
+    .suCBtmFlex2{
+        margin-left: 50px;
+    }
+    
+}

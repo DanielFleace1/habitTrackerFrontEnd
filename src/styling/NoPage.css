@@ -1,0 +1,29 @@
+.noPageParent{
+    background-color: rgb(248, 245, 245);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.noPageContent{
+    border: solid;
+    font-family: 'Noto Sans', sans-serif;
+    color: black;
+    background-color:#ffffff;
+    width: 600px;
+    height: 350px; 
+    padding: 10px;
+    border: 1px solid royalblue;
+    box-shadow:  -1px 1px royalblue,
+         -2px 2px royalblue,
+         -3px 3px royalblue,
+         -4px 4px royalblue,
+         -5px 5px royalblue;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+}

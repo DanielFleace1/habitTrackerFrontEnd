@@ -1,0 +1,291 @@
+.navBarParent{
+    display: flex;
+    flex-direction: column;
+    width: 225px;
+    border-right: solid;
+    border-color: rgb(245, 245, 245) ;
+    background-color: rgb(245, 245, 245);
+    align-items: center;
+
+}
+
+.nbUser{
+    border: solid;
+    margin-top: 40px;
+    width: 80%;
+    height: 38px;
+    /* padding-left: 5px; */
+    padding-top: 3px;
+    text-align: left;
+    font-size: 14px;
+    padding-left: 15px;
+    border-radius: 10%;
+    border-color: #e2e8f0;
+    background-color: rgb(255, 254, 254);
+
+}
+.nbUser:hover{
+    background-color: rgb(186, 223, 247)
+}
+
+.nbLinksContainer{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin-top: 10px;
+    /*  */
+    /* border: solid ; */
+}
+
+.appNavBarLinksTitle{
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.appNavBarLinks{
+    text-decoration: none;
+    margin-top: 5px;
+    padding-left: 1px;
+    color: royalblue;
+    font-size: 16px;
+    /* border: solid; */
+}
+.appNavBarLinks:hover{
+    text-decoration: underline;
+}
+
+.appNavBarInfo{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    width: 80%;
+
+}
+
+.appNavBarInfoTitle{
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.appNavBarInfoBtn{
+    margin-top:  6px;
+    border: none;
+    font-size: 16px;
+    color: royalblue;
+    padding-left: 1px;
+    text-align: left;
+    background-color: rgb(245, 245, 245);
+
+}
+.appNavBarInfoBtn:hover{
+    text-decoration: underline;
+}
+
+/* can make next 3 bigger but have to use media queries. */
+.howToUseDialogParent{
+    width: 300px;
+    height: 300px;
+}
+
+.contactDevDialogParent{
+    width: 300px;
+    height: 300px;
+}
+
+.logoutDialogParent{
+    width: 300px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logoutDialogButtons{
+    width: 50%;
+    border-radius: 10%;
+    font-size: 16px;
+    color: royalblue;
+    height: 30px;
+    border: groove;
+    background-color: rgb(245, 245, 245);
+}
+
+
+/* Nav Bar New Habit Dialog   [this is in the wrong spot & needs to be moved] */
+
+.newHaibitDialogInput{
+    margin-left: 20px;
+    margin-right:20px;
+    margin-bottom:20px;
+    border-left:hidden;
+    border-right:hidden;
+    border-top:hidden;
+    border-bottom: groove;
+    height:30px;
+    width: 80%;
+}
+
+.newHaibitDialogInput:focus{
+    outline: none;
+}
+
+.newHabitDialogOutput{
+    margin-left: 20px;
+    margin-right:20px;
+    margin-bottom:50px;
+    border-left:hidden;
+    border-right:hidden;
+    border-top:hidden;
+    border-bottom: groove;
+
+    height:30px;
+    width: 80%;
+
+}
+.newHabitDialogOutput:default{
+    color: green;
+}
+
+.newHabitDialogOutput:focus{
+    outline: none;
+}
+
+.newHabitDialogBtnsContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    border-top: solid;
+    height: 40px;
+    border-color: rgb(216, 215, 215) ;
+}
+.newHabitDialogBtns{
+    margin-top:  6px;
+    border: none;
+    font-size: 16px;
+    color: royalblue;
+    text-align: center;
+    background-color:white;
+    border: solid;
+    width : 80px;
+    margin-left: 8px;
+    margin-bottom: 3px;
+    margin-right: 2px;
+    border-radius: 10%;
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 750px) {
+    .navBarParent{
+        width: 150px;   
+    }
+    .nbUser{
+        font-size: 12px;
+        height: 28px;
+    }
+    .appNavBarLinksTitle{
+        font-size: 12px;
+    }
+    .appNavBarLinks{
+        font-size: 12px;
+    }
+    .appNavBarInfoTitle{
+        font-size: 12px;
+    }
+    .appNavBarInfoBtn{
+        font-size: 12px;
+    }
+    .logoutDialogButtons{
+        font-size: 12px;
+    }
+    .newHabitDialogBtns{
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 625px) {
+    .navBarParent{
+        width: 100px;   
+    }
+    .nbUser{
+        font-size: 10px;
+        height: 22px;
+    }
+    .appNavBarLinksTitle{
+        font-size: 10px;
+    }
+    .appNavBarLinks{
+        font-size: 10px;
+    }
+    .appNavBarInfoTitle{
+        font-size: 10px;
+    }
+    .appNavBarInfoBtn{
+        font-size: 10px;
+    }
+    .logoutDialogButtons{
+        font-size: 10px;
+    }
+    .newHabitDialogBtns{
+        font-size: 10px;
+    }
+}
+@media screen and (max-width: 450px) {
+    .navBarParent{
+        width: 80px;   
+    }
+    .nbUser{
+        font-size: 8px;
+        height: 22px;
+    }
+    .appNavBarLinksTitle{
+        font-size: 10px;
+    }
+    .appNavBarLinks{
+        font-size: 10px;
+    }
+    .appNavBarInfoTitle{
+        font-size: 10px;
+    }
+    .appNavBarInfoBtn{
+        font-size: 10px;
+    }
+    .logoutDialogButtons{
+        font-size: 10px;
+    }
+    .newHabitDialogBtns{
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 374px) {
+    .navBarParent{
+        width: 80px;   
+    }
+    .nbUser{
+        font-size: 8px;
+        height: 22px;
+    }
+    .appNavBarLinksTitle{
+        font-size: 8px;
+    }
+    .appNavBarLinks{
+        font-size: 8px;
+    }
+    .appNavBarInfoTitle{
+        font-size: 8px;
+    }
+    .appNavBarInfoBtn{
+        font-size: 8px;
+    }
+    .logoutDialogButtons{
+        font-size: 8px;
+    }
+    .newHabitDialogBtns{
+        font-size: 8px;
+    }
+    
+    
+}

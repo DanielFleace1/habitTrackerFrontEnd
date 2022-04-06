@@ -13,9 +13,7 @@ function NewHabitMUIdialog ({handleHabitDialog, openHabitDialog})  {
     
     return(
         <div>
-            
-            <Dialog autoFocus maxWidth={'md'} fullWidth={true} open={openHabitDialog} onClose={handleHabitDialog}>
-                
+            <Dialog autoFocus maxWidth={'md'} fullWidth={true} open={openHabitDialog} onClose={handleHabitDialog}>   
                 <form onSubmit={()=>console.log('submit')}>
                 <DialogTitle sx={{textAlign:'center'}}>
                     Create new Habit!   
@@ -25,7 +23,6 @@ function NewHabitMUIdialog ({handleHabitDialog, openHabitDialog})  {
                     <TextField sx={{  }} autoFocus margin="normal" id="habitPrompt"  label="Create a prompt for new habit." type="text" fullWidth />
                 </Box>
                 <br/>
-
                {/*
                <Select labelId="demo-simple-select-label" id="demo-simple-select" value={0} label="Age" onChange={()=>{console.log('yeah')}}>
                     <MenuItem value={10}>Number</MenuItem>
@@ -35,9 +32,7 @@ function NewHabitMUIdialog ({handleHabitDialog, openHabitDialog})  {
                 <br/>
                 <button type='submit'> submit </button> */}
                 </form>
-
             </Dialog>
-
         </div>
     )
 }

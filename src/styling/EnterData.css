@@ -1,0 +1,152 @@
+.enterDataParent{
+    display: flex;
+    flex-direction: column;
+    padding-left: 5px;
+    padding-top: 5px;
+    font-size: 16px;
+
+    /* border: solid; */
+    /* background-color: aquamarine; */
+    overflow-y: scroll;
+
+
+}
+.enterDataHeaderContainer{
+    width: 100%;
+    border-bottom: solid;
+    border-color: #e2e8f0;
+    height: 40px;
+    display: flex;
+    justify-content: flex-start;
+}
+.enterDataHeaderText{
+    padding-right: 10px;
+    padding-top: 12px;
+}
+.enterDataDateInput{
+    border-top: hidden;
+    border-left: hidden;
+    border-right: hidden;
+    border-bottom: hidden;
+    padding-top: 15px;
+}
+.enterDataDateInput:focus{
+    outline: none;
+}
+.enterDataForm{
+    display: flex;
+    flex-direction: column;
+    padding-left: 5px;
+    border-bottom:solid ;
+    border-color:#e2e8f0; 
+}
+.enterDataFormContainer{
+    display: flex;
+    flex-direction: row;   
+    /*  */
+    /* border: solid; */
+}
+.enterDataFormNames{
+    padding-left: 5px;
+    width: 100%;
+    margin-top: 10px;
+
+
+    /*  */
+    /* border: solid; */
+}
+.enterDataFormInputContainer{
+    display: flex;
+    width: 80%;
+    justify-content: flex-end;
+
+
+    /*  */
+    /* border: solid; */
+}
+.enterDataFormInput{
+    display: flex;
+    margin-top: 10px;
+    border-left: hidden;
+    border-right: hidden;
+    border-top: hidden;
+    border-bottom: groove;
+    width: 300px;
+    justify-content: flex-end;
+    text-align: center;
+    /*  */
+    /* border: solid; */
+}
+
+.enterDataFormInput:focus{
+    outline: none;
+}
+.enterDataButtonContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.enterDataButton{
+    color: white;
+    background-color: royalblue;
+    width:20%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 15%;
+    height: 30px;
+}
+
+@media screen and (max-width: 1150px) {
+    .enterDataFormInput{
+        width: 200px;
+    }    
+}
+
+@media screen and (max-width: 750px) {
+    .enterDataParent{
+        font-size: 12px;
+    }
+
+    .enterDataFormInput{
+        width: 150px;   
+        font-size: 10px;
+    }   
+    
+}
+@media screen and (max-width: 525px) {
+    .enterDataParent{
+        font-size: 10px;
+    }
+
+    .enterDataFormInput{
+        width: 90px;   
+        font-size: 8px;
+    }   
+
+    .enterDataDateInput{
+        font-size: 10px;
+        /* border: solid; */
+    }
+    .enterDataButton{
+        font-size: 10px;
+    }
+    
+}
+
+@media screen and (max-width: 374px) {
+    .enterDataParent{
+        font-size: 8px;
+    }
+
+    .enterDataFormInput{
+        width: 80px;   
+        font-size: 6px;
+    }   
+
+    .enterDataButton{
+        font-size: 8px;
+    }
+    
+}
