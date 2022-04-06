@@ -5,11 +5,26 @@ import serverFunctions from '../srcUtils/serverFunctions';
 
 
 const EnterData = () =>{
-  
+     
+    // Format Date
+      function formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+    
+        if (month.length < 2) 
+            month = '0' + month;
+        if (day.length < 2) 
+            day = '0' + day;
+    
+        return [year, month, day].join('-');
+    }
+
     // State
     const [values,setValues] = useOutletContext();
     const [form,setForm] = useState({})
-    const [date,setDate] = useState(new Date().toISOString().split('T')[0])
+    const [date,setDate] = useState(formatDate(new Date()))
     const navigate = useNavigate();
     // Form Helper
     const typeHelper = {

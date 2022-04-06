@@ -21,25 +21,20 @@ const HomePage = () => {
         window.refresh()
     }
 
-    const handleGetStartedClick = () => {
-        console.log('ur mom')
-    }
-
     // HomePage Effects
     useEffect(() => {
         // effect to set up event listner to: handle window resize => UI component (nav bar info) needs to be changed with width 
         const handleWindowResize = () => setWidth(window.innerWidth)
         window.addEventListener("resize", handleWindowResize);
         return () => window.removeEventListener("resize", handleWindowResize);
-    },[]);
+    });
     useEffect(() => {
         // effect to handle closing menu when width becomes > breakpoint
         if(width>breakpoint){ setDisplayMenu(false)}
-    })
+    },[width])
     useEffect(() => {
         // effect to set up and evenlistner to: handle a click outside of the drop down menu. will close the menu
         let components = document.querySelectorAll('.navBarTopTitle, .navBarTopFill2, .hpm1Container') 
-        
         const handleMenuOutsideClick = (e) =>{
             if(displayMenu) {
                 setDisplayMenu(false)
@@ -84,9 +79,8 @@ const HomePage = () => {
             </div>
             <div className="hpm1Container"> 
                 <div className="hmp1TopText">Create Customizable Habits to Track Personal Productivity</div>   
-               {/* <button className='getStartedButton' onClick={handleGetStartedClick}> Sign Up! </button> */}
                     <Link to = "/SignUp" className="getStartedButton"> Sign Up !</Link>
-               <img src = {photo} id="hpImage"/>
+               <img src = {photo} id="hpImage" alt="Graph with Positive Slope"/>
                 <div className="hmp1BtmText">  "You do not rise to the level of your goals. You fall to the level of your systems."<br/>-James Clear, Atomic Habits </div> 
             </div>
             <div id="howItWorks">
@@ -95,17 +89,17 @@ const HomePage = () => {
                     <div className="hpm2infoContainer">
                         <div className="hpm2infoHeader"> 1.) Set it up!</div>
                         <div className="hpm2infoText"> Create the habits you wish to track and select a customizable tracking metric.</div>
-                        <img src = {pencilImg} id="hpm2pen"/>
+                        <img src = {pencilImg} id="hpm2pen" alt="Pencil"/>
                     </div>
                     <div className="hpm2infoContainer">
                         <div className="hpm2infoHeader"> 2.) Track your Data!</div>
                         <div className="hpm2infoText"> Come back to record your data each day! If you forget you can go back and record for any day!</div>
-                        <img src = {noteBookImg} id="hpm2notebook"/>
+                        <img src = {noteBookImg} id="hpm2notebook" alt="NoteBook"/>
                     </div>
                     <div className="hpm2infoContainer">
                         <div className="hpm2infoHeader"> 3.) View your progress!</div>
                         <div className="hpm2infoText">  Select a data range to view your data and see your progress!. </div>
-                        <img src = {rocketImg} id="hpm2rocket"/>
+                        <img src = {rocketImg} id="hpm2rocket" alt="Rocket"/>
                     </div>               
                 </div>
             </div>

@@ -1,8 +1,9 @@
 import '../styling/ManageHabits.css';
 import { useOutletContext,useNavigate } from "react-router-dom";
-import { Dialog, DialogTitle,Menu,MenuItem } from '@mui/material'
+import { Dialog, DialogTitle } from '@mui/material'
 import { useState } from 'react';
 import serverFunctions from '../srcUtils/serverFunctions';
+
 
 function ManageHabits() {
     const [values,setValues] = useOutletContext();
@@ -72,13 +73,12 @@ function ManageHabits() {
               },5000)   
         }
     }
-
     return(
         <div className="ManageHabitsParent">
             {
                 values.HabitAry.map((elm) => {
                     return(
-                        <div className='manageHabitsMap1'>
+                        <div key={elm._id} className='manageHabitsMap1'>
                             <div className='manageHabitsMap2'>{elm.habitName}</div>
                             <div className='manageHabitsMap3'> <button onClick={handleOpen} id ={elm._id} name={elm.habitName} className='manageHabitsBtn'> Delete </button> </div>
                         </div>

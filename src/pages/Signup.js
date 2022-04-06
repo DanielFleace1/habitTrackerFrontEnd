@@ -17,7 +17,7 @@ function SignUp() {
         password: '',
         showPassword:'password',
     };
-    const [severity, setSeverity] = useState('')
+    const [severity, setSeverity] = useState('info')
     const [alertMsg,setAlertMsg] = useState('')
     const [values, setValues] = useState(initialValues);
     // React Router Use Navigate

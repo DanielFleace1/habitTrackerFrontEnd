@@ -5,8 +5,8 @@ import NavBar from '../components/NavBar';
 import NewHabitDialog from '../components/NewHabitDialog'
 import { useEffect, useState } from 'react';
 import { useNavigate, } from "react-router-dom";
-import { Outlet } from 'react-router';
 import serverFunctions from '../srcUtils/serverFunctions';
+import { Outlet } from 'react-router';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';     
 // serverfunctions
@@ -17,7 +17,6 @@ const App =  () => {
         loggedUser:'',
         userId:'', 
         token:'',
-        Date:'', // used for Date input
         newHabit: false,
         HabitAry:[],
         habitId:'',
@@ -25,7 +24,6 @@ const App =  () => {
         severity:'', // Material UI Alert severity. ex. success, error
         showAlert:false, // show material UI alert 
         loadingMsg:'Loading...',
-
     }
     const [values,setValues] = useState(initialValues)
 
@@ -47,7 +45,6 @@ const App =  () => {
                         setValues({
                             ...values,
                             loadingMsg:'Start by clicking on  "Add Habit++"  to track a habit! Click "How to use App" for more info.',
-                            HabitAry: res.habitAry,
                             loggedUser:user.username,
                             token:user.token,
                             habitId:user.habitId
@@ -95,7 +92,8 @@ const App =  () => {
             }
         }
         fetchdata()
-    },[])
+    },[ ])
+
     // Handlers
     // Handle Click of New Habit Button
     const handleNewHabitOpen = () => {
@@ -113,7 +111,7 @@ const App =  () => {
     }
 
     //Destruct State Values 
-    const{loggedUser,newHabit, severity,alertMsg,showAlert ,loadingMsg,userId,Date} = values
+    const{loggedUser,newHabit, severity,alertMsg,showAlert ,loadingMsg} = values
     return(     
         <div className="appParent"> 
             <NavBar LoggedUser = {loggedUser} />

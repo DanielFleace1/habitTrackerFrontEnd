@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link,useNavigate } from "react-router-dom";
 import serverFunctions from "../srcUtils/serverFunctions";
-import SignUpvalidation from "../srcUtils/validation";
 import TextField from '@mui/material/TextField';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
@@ -17,7 +16,7 @@ const SignIn = () => {
         password: '',
         showPassword:'password',
     };
-    const [severity, setSeverity] = useState('')
+    const [severity, setSeverity] = useState('info')
     const [alertMsg,setAlertMsg] = useState('')
     const [values, setValues] = useState(initialValues);
     // Navigate after successful login

@@ -2,7 +2,7 @@ import { Dialog, DialogTitle} from '@mui/material';
 import { useState } from 'react';
 import '../styling/NavBar.css';
 import serverFunctions from '../srcUtils/serverFunctions';
-import { Link,useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 
 

@@ -1,17 +1,33 @@
-
-
-import { useState,useEffect } from "react"
+import { useState } from "react"
 import { useOutletContext } from "react-router-dom";
 import '../styling/ViewData.css';
 
 const ViewData = () => {
 
+    function formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+    
+        if (month.length < 2) 
+            month = '0' + month;
+        if (day.length < 2) 
+            day = '0' + day;
+    
+        return [year, month, day].join('-');
+    }
+
+
+    
     //  Use Local Storage So that a Users Date Selection will Persist Throughout Their Current Login in Session on the App.
     let storedDates = window.localStorage.getItem('storedDates');
     if(!storedDates){
         const storedDatesObj = {
-             startDate: new Date().toISOString().slice(0, 10),
-            endDate: new Date().toISOString().slice(0, 10)
+            // startDate: new Date().toISOString().slice(0, 10),
+            // endDate: new Date().toISOString().slice(0, 10)
+            startDate: formatDate(new Date()),
+            endDate: formatDate(new Date()) 
         }
         window.localStorage.setItem('storedDates', JSON.stringify(storedDatesObj)) 
         storedDates = window.localStorage.getItem('storedDates')
@@ -34,11 +50,10 @@ const ViewData = () => {
         window.localStorage.setItem('storedDates', JSON.stringify(newStoredDates)) 
     }
 
-   
-    
     // Create Dates Column  
     let getDaysArray = function(start, end) {
         let arr = []
+        console.log('start::',start,'end:::',end)
         for(const date=new Date(end); date>=new Date(start); date.setDate(date.getDate()-1)){
             arr.push(date.toISOString().slice(0, 10));
         }
@@ -89,13 +104,13 @@ const ViewData = () => {
                                                 index.habitData.map(habitDataElm =>{
                                                     if(dateElm === habitDataElm.date.slice(0,10)){
                                                         return(
-                                                            <div className="viewDataDataValues">
+                                                            <div  key ={habitDataElm._id} className="viewDataDataValues">
                                                                 {habitDataElm.value}
                                                             </div>
                                                     )}
                                                     counter++
                                                     if(counter === index.habitData.length){
-                                                        return(<div className="viewDataDataValues"> - </div>)
+                                                        return(<div  key ={habitDataElm._id} className="viewDataDataValues"> - </div>)
                                                     }    
                                             }))
                                         })
