@@ -106,7 +106,7 @@ const HomePage = () => {
                 </div>
                 <div className="hpm3top">
                 Hi I'm Daniel, <br/><br/>
-                Self taught software engineer & web developer. Previously a process engineer!
+                Self taught software engineer & web developer. Previously a manufacturing  process engineer!
                 <br/><br/>
                 I made this project to display my skill set as a developer & replace my google sheet that I currently use to track my personal habits!
                 <br/><br/>
