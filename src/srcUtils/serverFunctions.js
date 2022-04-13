@@ -1,10 +1,8 @@
 import axios from 'axios'
-//Front End URL
-//const baseURL = 'http://localhost:3001/stats'
 //BackEnd URL
-const baseURL = 'http://localhost:3001/'
-// Heroku// production build
-// const baseURL = '/'
+// const baseURL = 'http://localhost:3001/'
+// Heroku production build
+const baseURL = '/'
 
 // Login in
 const login = async (credentials) => {
@@ -24,7 +22,7 @@ const createHabitDocument = async (userIdObj,token) =>{
   const response = await axios.post(`${baseURL}api/habits`,userIdObj,config)
   return response.data; 
 }
-// Add new Habit to Habit Ary 
+// Add new Habit (Ex. x hours of sleep) to Habit Ary in Habit Document  
 const addNewHabit = async (newHabitObj,habitId,token) =>{
   const config = {
     headers:{ Authorization: 'bearer '+token},
@@ -40,7 +38,7 @@ const getUserHabitDocument = async(habitId,token) =>{
   const response = await axios.get(`${baseURL}api/habits/${habitId}`,config);
   return response.data;
 }
-// Add data to users individual Habits in Habit Ary
+// Add data to Users  Habits (Ex. x hours of sleep) in Habit Ary in  Habit Document
 const addToHabitData = async (newHabitData,habitId,token) =>{
   const config = {
     headers:{ Authorization: 'bearer '+ token},
@@ -48,37 +46,13 @@ const addToHabitData = async (newHabitData,habitId,token) =>{
   const res = await axios.put(`${baseURL}api/habits/${habitId}`,newHabitData,config)
   return res.data
 }
-// Delete individual habit in habit ary 
+// Delete Individual Habit (Ex. x hours of sleep) in Habit Ary 
 const deleteHabitFromHabitAry = async (habitAryIdObj,habitId,token) => {
-  const config = {
-    headers:{ Authorization: 'bearer '+ token},
-  }
   const res = await axios.delete(`${baseURL}api/habits/${habitId}`,{ data: { habitAryIdObj},headers: { "Authorization": 'bearer '+ token } });
   return res.data
 }
-
-// axios.delete(url, { data: { foo: "bar" }, headers: { "Authorization": "***" } });
 
 export default {
  login,signUp, createHabitDocument,addNewHabit, getUserHabitDocument,addToHabitData,deleteHabitFromHabitAry
 }
 
-
-
-
-// // Create New Entry 
-// const create = async (newObj) => {
-//   const config = {
-//     headers:{ Authorization: token},
-//   }
-//   const response = await axios.post(`${baseURL}api/data`,newObj,config)
-//   return response.data
-// }
-// // Edit Data for logged in user 
-// const update = (id,newObj) =>{
-//     return axios.put(`${baseURL}api/data/${id}`,newObj)
-// }
-// // Remove Data 
-// const remove = (id) => {
-//   return axios.delete(`${baseURL}api/data/${id}`)
-// }

@@ -1,33 +1,40 @@
-import '../styling/ManageHabits.css';
+
 import { useOutletContext,useNavigate } from "react-router-dom";
-import { Dialog, DialogTitle } from '@mui/material'
 import { useState } from 'react';
 import serverFunctions from '../srcUtils/serverFunctions';
+import { Dialog, DialogTitle } from '@mui/material'
+import '../styling/ManageHabits.css';
+
 
 
 function ManageHabits() {
+    // State
     const [values,setValues] = useOutletContext();
-    const [deleteDialog,setDeleteDialog] = useState( false);
+    const [deleteDialog,setDeleteDialog] = useState(false);
     const [deleteId,setDeleteId] = useState('')
     const[deleteName,setDeleteName] = useState('')
+    
     // Access Local Storage
     const loggedUserJSON = window.localStorage.getItem('loggedOn')
     let user = JSON.parse(loggedUserJSON)
-
+    // React Router - Navigate 
     const navigate = useNavigate();
-
+    
+    // Handlers
     const handleClose = () => {
+        // Close Delete Dialog
         setDeleteDialog(false)
     }
     const handleOpen = (e) => {
-        const {name,id} = e.target
-        // cut string off for ... at 15 characters or something 
+        // Open Delete Dialog 
+        const {name,id} = e.target 
         setDeleteId(id)
         setDeleteName(name)
         setDeleteDialog(true)
     }
-    // Handle User Confirming Delete 
+    
     const handleDelete =  async (e) => {
+    // Handle User Confirming Delete 
         try{
             e.preventDefault();
             const obj = {
@@ -95,5 +102,4 @@ function ManageHabits() {
         </div>
     )
 }
-
 export default ManageHabits    

@@ -1,13 +1,11 @@
 import { useState } from "react";
 import { Link,useNavigate } from "react-router-dom";
-import SignUpvalidation from "../srcUtils/validation";
+import validation from "../srcUtils/validation";
 import serverFunctions from "../srcUtils/serverFunctions";
 import TextField from '@mui/material/TextField';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import "../styling/SignUp.css" 
-
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"></link> 
 
 function SignUp() {
     // State & Inital State values
@@ -22,13 +20,17 @@ function SignUp() {
     const [values, setValues] = useState(initialValues);
     // React Router Use Navigate
     const navigate = useNavigate();
+
     // Handler Functions
-    // Handle Submit of Sign Up For
     const handleSubmit = async (e) => {
+        // Handle Submit of Sign Up For
+        // Show loading Message
         e.preventDefault()
+        setAlertMsg('Attempting to Sign Up!')
+        setSeverity('info')  
         // Check Validation - Client Side 
-        if(typeof(SignUpvalidation(values)) === 'string'){ 
-            setAlertMsg(SignUpvalidation(values))
+        if(typeof(validation.SignUpvalidation(values)) === 'string'){ 
+            setAlertMsg(validation.SignUpvalidation(values))
             setSeverity('error')
             setTimeout(()=>{
                 setAlertMsg('')
@@ -41,20 +43,30 @@ function SignUp() {
                 email: values.email.toLocaleLowerCase(),
                 password : values.password,
             }
+
+            console.log('sign up submit::', reqObj.username)
             //  Use Sign Up Route to Create User Document in Database
             let user = await serverFunctions.signUp(reqObj)
+            console.log('user',user)
+
             let createHabitDocument = await serverFunctions.createHabitDocument({userId: user.userId},user.token)
+
             let userObj = {                
                 token: user.token,
                 habitId:createHabitDocument.habitDocId,
                 username:user.username
             }
-            // Set username &&  userId  & token in local storage
+            console.log('username',userObj.username)
+
+            // Set Username && UserId && Token in Local Storage
             window.localStorage.setItem('loggedOn', JSON.stringify(userObj)) 
+
+
+
             //  Success Message
-            setAlertMsg('You have been Sucessfully Signed up! Redirecting to the App!')
+            setAlertMsg('You have been sucessfully signed up! Redirecting to Habits!')
             setSeverity('success')  
-            // // Redirect & clear alert form     
+            // Redirect & clear alert form     
             setTimeout(()=>{
                 setAlertMsg('');
                 navigate('/App'); 
@@ -77,16 +89,17 @@ function SignUp() {
         }
     }
 
-    // Handle Input Change to Sign Up Form
     const handleInputChange = (e) => {
+        // Handle Input Change to Sign Up Form
         const { name, value } = e.target;
         setValues({
           ...values,
           [name]: value
         });
     }
-    //  Handle State Change from Clicking Show Password
+
     const handleShowPassword = () => {
+        // Handle State Change from Clicking Show Password
         setValues({
             ...values,
             showPassword: showPassword === 'password' ? 'text' : 'password'
@@ -94,12 +107,23 @@ function SignUp() {
     }
 
     const handleForgotPassWord = (e) => {
+        // Handle State Change from Clicking Show Password
         e.preventDefault()
         setAlertMsg('This feature is still being developed.')
         setSeverity('info')
         setTimeout(() => {
             setAlertMsg('')
         },3000)
+    }
+
+    const handleDemo = (e) => {
+        // Handle Click See Demo
+        e.preventDefault()
+        setAlertMsg('Go to Sign In page & try email: dandevs@gmail.com & Password: " Daniel12! ". Once in the app click "How to use".    ')
+        setSeverity('info')
+        setTimeout(() => {
+            setAlertMsg('')
+        },9000)
     }
     
     // Destruct Values Object 
@@ -133,6 +157,7 @@ function SignUp() {
                     </div>  
                 </form> 
             </div>
+            <button onClick={handleDemo} className="demoAccBtn"> Wanna see a demo account?</button>
         </div>
     )
 }

@@ -16,7 +16,7 @@
   width: 100vw;
   height: 100vh;
   /*  */
-  /* border: solid; */
+
 }
 
 .appMain{
@@ -26,6 +26,7 @@
   border: solid;
   border-color:#e2e8f0;
   max-width: 1000px; 
+  /* border-color:blue;   */
 
 }
 .appMainHeader{

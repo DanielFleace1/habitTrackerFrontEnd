@@ -7,8 +7,6 @@ import Stack from '@mui/material/Stack';
 import "../styling/SignUp.css" ;
 import "../styling/SignIn.css" ;
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"></link>
-
 const SignIn = () => {
     // State & inital State values
     const initialValues = {
@@ -19,12 +17,15 @@ const SignIn = () => {
     const [severity, setSeverity] = useState('info')
     const [alertMsg,setAlertMsg] = useState('')
     const [values, setValues] = useState(initialValues);
-    // Navigate after successful login
+    // React Router - Navigation 
     const navigate = useNavigate();
-    // handler functions
-    // handle submit of sign up for 
+
+    // Handler Functions
     const handleSubmit = async (e) => {
+        // Handle Submit of Sign In 
         e.preventDefault()
+        setAlertMsg('Attempting to Sign In!')
+        setSeverity('info')  
         try{    
             let reqObj = {
                 email: values.email.toLowerCase(),
@@ -33,7 +34,7 @@ const SignIn = () => {
             let user = await serverFunctions.login(reqObj)
             window.localStorage.setItem('loggedOn', JSON.stringify(user)) 
             // Success Message
-            setAlertMsg('You have been Sucessfully Signed in! Redirecting to the App!')
+            setAlertMsg('You have been sucessfully signed in! Redirecting to the Habits!')
             setSeverity('success')  
             //Clear State & Navigate to App 
             setTimeout(()=>{
@@ -60,9 +61,8 @@ const SignIn = () => {
             },2000)
         }
     }
-
     const handleInputChange = (e) => {
-        // Handle input changes to Sign Up Fields 
+        // Handle Input Changes to Sign Up Fields 
         const { name, value } = e.target;
         setValues({
           ...values,
@@ -70,6 +70,7 @@ const SignIn = () => {
         });
     }
     const handleShowPassword = () => {
+        // Handle Show Password Change
         setValues({
             ...values,
             showPassword: showPassword === 'password' ? 'text' : 'password'
@@ -77,6 +78,7 @@ const SignIn = () => {
     }
 
     const handleForgotPassWord = (e) => {
+        //  Handle Click forgot Password
         e.preventDefault()
         setAlertMsg('This feature is still being developed.')
         setSeverity('info')
@@ -85,23 +87,34 @@ const SignIn = () => {
         },3000)
     }
 
-    // Destruct values obj
+    const handleDemo = (e) => {
+        // Handle Click See Demo
+        e.preventDefault()
+        setAlertMsg('Go to Sign In page & try email: dandevs@gmail.com & Password: " Daniel12! ". Once in the app click "How to use".    ')
+        setSeverity('info')
+        setTimeout(() => {
+            setAlertMsg('')
+        },9000)
+    }
+
+    // Destruct Values Object 
     const {email ,password,showPassword} = values
+
     return (
         <div className="siParent">
             <div className="siParentAlerts">
                 {alertMsg &&
-                <Stack sx={{ width: '100%', }} spacing={2}>
-                    <Alert severity={severity}>{alertMsg}</Alert>
-                </Stack>
+                    <Stack sx={{ width: '100%', }} spacing={2}>
+                        <Alert severity={severity}>{alertMsg}</Alert>
+                    </Stack>
                 }      
             </div>
             <div className="siContainer">
                 <Link className = "siChomeLink" to = "/"> HomePage </Link>
                 <div className="siCtitle">  Welcome back, sign in!</div>
                 <form onSubmit={handleSubmit}>
-                    <TextField required type ="text" name ="email" value = {email}   onChange={(e) => handleInputChange(e)} size="small" sx={{width: '340px',paddingTop: '5px',paddingBottom:'22px'}}  label="Email" variant="outlined" /><br/>
-                    <TextField  required type = {showPassword} name ="password" value ={password} onChange={(e) => handleInputChange(e)} size ="small" sx={{width: '340px',paddingTop: '5px', marginBottom : '0px'}}  helperText="Must contain: 8+ characters, one uppercase, one lowercase, & one special character!" label="Password" variant="outlined" />
+                    <TextField required type ="text" name ="email" value = {email}   onChange={handleInputChange} size="small" sx={{width: '340px',paddingTop: '5px',paddingBottom:'22px'}}  label="Email" variant="outlined" /><br/>
+                    <TextField  required type = {showPassword} name ="password" value ={password} onChange={handleInputChange} size ="small" sx={{width: '340px',paddingTop: '5px', marginBottom : '0px'}}  helperText="Must contain: 8+ characters, one uppercase, one lowercase, & one special character!" label="Password" variant="outlined" />
                     <div className="si_showPasswordEye">
                         <i className="far fa-eye" onClick={handleShowPassword}></i>
                     </div>
@@ -114,6 +127,7 @@ const SignIn = () => {
                     </div>
                 </form> 
             </div>
+            <button onClick={handleDemo} className="demoAccBtn"> Wanna see a demo account?</button>
         </div>
     )
 }

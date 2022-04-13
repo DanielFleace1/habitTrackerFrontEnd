@@ -8,32 +8,32 @@ import rocketImg from '../images/rocket.png'
 import "../styling/HomePage.css" 
 
 const HomePage = () => {
-    // HomePage State
+    // State & Variables
     const [displayMenu,setDisplayMenu] = useState(false)
     const [width, setWidth] = useState(window.innerWidth);
-    // HomePage Variables
-    const breakpoint = 1120; 
+    const breakpoint = 1120;
+
     // HomePage Handlers
-    const handleMenuBtn = () => setDisplayMenu(!displayMenu)
+    const handleMenuBtn = () => setDisplayMenu(!displayMenu) // Expand Hamburger Menu
 
     const refreshToTop = () => {
         // Refresh when clicking on title
         window.refresh()
     }
-
+    
     // HomePage Effects
     useEffect(() => {
-        // effect to set up event listner to: handle window resize => UI component (nav bar info) needs to be changed with width 
+        // Effect to set up Event Listner to: Handle Window Resize => UI component (Nav Bar Info) needs to be Changed with Width 
         const handleWindowResize = () => setWidth(window.innerWidth)
         window.addEventListener("resize", handleWindowResize);
         return () => window.removeEventListener("resize", handleWindowResize);
     });
     useEffect(() => {
-        // effect to handle closing menu when width becomes > breakpoint
+        // Effect to Handle Closing Menu when Width Becomes > Breakpoint
         if(width>breakpoint){ setDisplayMenu(false)}
     },[width])
     useEffect(() => {
-        // effect to set up and evenlistner to: handle a click outside of the drop down menu. will close the menu
+        // Set up and Event Listner to: Handle a Click Outside of the Drop Down menu to close Menu
         let components = document.querySelectorAll('.navBarTopTitle, .navBarTopFill2, .hpm1Container') 
         const handleMenuOutsideClick = (e) =>{
             if(displayMenu) {
@@ -48,7 +48,6 @@ const HomePage = () => {
     return(
         <div className="homePageParent">
             <div className= "navBarContainer">
-                {/* Top of Nav Bar */}
                 {
                     width > breakpoint ?
                     <nav className="navBarTop">
@@ -57,8 +56,6 @@ const HomePage = () => {
                         <Link to = "/SignIn" className="navBarTopInfo" >Sign In </Link>
                         <a href="#howItWorks" className="navBarTopInfo">About App</a>
                         <a href="#aboutDev" className="navBarTopInfo">About Developer</a>
-                        {/* <Link to = "/AboutApp" className="navBarTopInfo" >About App </Link> */}
-                        {/* <Link to = "/AboutDev" className="navBarTopInfo" >About Devloper </Link> */}
                     </nav>
                     :
                     <nav className="navBarTop">
@@ -72,8 +69,8 @@ const HomePage = () => {
                     displayMenu && breakpoint > width &&
                     <div className="navBarBtm"> 
                         <Link to = "/SignIn" className="navBarBtmInfo" >SignIn </Link>
-                        <Link to = "/AboutApp" className="navBarBtmInfo" >About App </Link>
-                        <Link to = "/AboutDev" className="navBarBtmInfo" >About Devloper </Link>
+                        <a href="#howItWorks" className="navBarBtmInfo" >About App </a>
+                        <a href="#aboutDev" className="navBarBtmInfo" >About Devloper </a>
                     </div>
                 }   
             </div>
@@ -117,27 +114,11 @@ const HomePage = () => {
                
                 <br/><br/>
                 I'm currently looking for a job as a full stack developer! Contact me on <a className="links" href="https://www.linkedin.com/in/danielfleace/">LinkedIN</a> or by email: <div style={{color:'rgb(11, 179, 235)', display: 'inline'}}> danielfleace15@gmail.com </div>! 
-               {/* <br></br><br></br>
-                I'm currently looking for a full time  job!
-                Checkout my github to see the repo and more about my programming or my linkedIN to contact me!  */}
                 </div>
             </div>
-
-
-            
-                
-       
-
         </div>
     )
 }
 export default HomePage
 
-
-// next step 
-// Style nav bar
-
-
-
-// other 
-// refresh menu in smaller view     
+   

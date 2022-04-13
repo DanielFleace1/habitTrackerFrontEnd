@@ -1,10 +1,11 @@
-/** Import **/
+
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css");
-/**End Import **/
+
 
 .suParent{
     background-color: rgb(248, 245, 245);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -14,6 +15,8 @@
     position: absolute;
     top:10%;
     align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
 
 }
 
@@ -58,7 +61,6 @@
     position: relative;
     left: 310px;
     bottom:  75px;
-
 }
 
 .suCBtmFlex{
@@ -68,7 +70,6 @@
 .suCBtmFlex2{
     display: flex;
     flex-direction: column; 
-
     align-items: flex-start;
     margin-left: 100px;
     margin-top: 7px;
@@ -90,10 +91,6 @@
 .suCBtn{
     cursor: pointer;
 }
-
-/* .suCpasswordReq{
-    font-size: 12px;
-} */
 
 .suCtoLogin{
     display: flex;
@@ -128,47 +125,55 @@
     color: royalblue;
     border: hidden;
     background-color: #ffffff;
-
 }
+
 .suCtforgotPassBtn:hover{
     text-decoration: underline
 }
+
+.demoAccBtn{
+    border: solid;
+    margin-top: 30px;
+    background-color:  rgb(248, 245, 245);
+    border: none;
+    color: royalblue;
+}   
+.demoAccBtn:hover{
+    text-decoration: underline;
+}   
+
 
 
 @media screen and (max-width: 650px) {
     .suContainer{
         width: 500px;
-    }
-
-    
+    }    
 }
 
 @media screen and (max-width: 550px) {
     .suContainer{
         width: 425px;
-
     }
     .suCtitle{
         font-size: 28px;
     }
 }
 
-/*  */
-@media screen and (max-height: 500px) {
+@media screen and (max-width: 500px) {
     .suContainer{
-        height: 350px; 
+        height: 400px; 
+        width: 425px;
     }
     .suCtitle{
         font-size: 28px;
     }
-   
 }
-@media screen and (max-height: 475px) {
+
+@media screen and (max-width: 475px) {
     .suContainer{
         width: 350px; 
     }
     .suCBtmFlex2{
         margin-left: 50px;
-    }
-    
+    } 
 }

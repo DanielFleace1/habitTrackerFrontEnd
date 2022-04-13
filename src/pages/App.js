@@ -92,7 +92,7 @@ const App =  () => {
             }
         }
         fetchdata()
-    },[ ])
+    },[])
 
     // Handlers
     // Handle Click of New Habit Button

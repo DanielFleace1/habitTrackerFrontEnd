@@ -5,9 +5,9 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-// import App from'./App'
+
 import Homepage from "./pages/HomePage";
-import SignUp from "./pages/SignUp";
+import SignUp from "./pages/Signup";
 import SignIn from "./pages/SignIn";
 import App from "./pages/App"
 import EnterData  from "./pages/EnterData"
@@ -15,16 +15,13 @@ import ManageHabits from "./pages/ManageHabits"
 import ViewData from "./pages/ViewData"
 import NoPage from "./pages/NoPage"
 
-
-
-
 ReactDOM.render(
   <React.StrictMode>
       <BrowserRouter>  
         <Routes>
           <Route path="/" element={<Homepage />}></Route>
           <Route path="/Homepage" element={<Homepage/>}></Route>
-          <Route path="SignUp" element={<SignUp />}></Route>
+          <Route path="/SignUp" element={<SignUp />}></Route>
           <Route path="SignIn" element={<SignIn />}></Route>
           <Route path="App" element={<App />}>
             <Route index element={<EnterData />} />
@@ -34,7 +31,6 @@ ReactDOM.render(
           </Route>
           <Route path="*" element={<NoPage/>}/>  
         </Routes>
-        
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

@@ -17,17 +17,13 @@ const ViewData = () => {
     
         return [year, month, day].join('-');
     }
-
-
     
     //  Use Local Storage So that a Users Date Selection will Persist Throughout Their Current Login in Session on the App.
     let storedDates = window.localStorage.getItem('storedDates');
     if(!storedDates){
         const storedDatesObj = {
-            // startDate: new Date().toISOString().slice(0, 10),
-            // endDate: new Date().toISOString().slice(0, 10)
             startDate: formatDate(new Date()),
-            endDate: formatDate(new Date()) 
+            endDate:  formatDate(new Date())
         }
         window.localStorage.setItem('storedDates', JSON.stringify(storedDatesObj)) 
         storedDates = window.localStorage.getItem('storedDates')
@@ -53,17 +49,13 @@ const ViewData = () => {
     // Create Dates Column  
     let getDaysArray = function(start, end) {
         let arr = []
-        console.log('start::',start,'end:::',end)
         for(const date=new Date(end); date>=new Date(start); date.setDate(date.getDate()-1)){
-            arr.push(date.toISOString().slice(0, 10));
+          arr.push(date.toISOString().slice(0, 10));
         }
         return arr;
     };
     let columnDates = getDaysArray(dates.startDate,dates.endDate)  
-    // console.log(values,'::;values')
-    // useEffect(() => {
-    // },[])
-    // Destruct state
+
 
     const {startDate,endDate} = dates
     return(
@@ -102,7 +94,7 @@ const ViewData = () => {
                                             let counter = 0 
                                             return(
                                                 index.habitData.map(habitDataElm =>{
-                                                    if(dateElm === habitDataElm.date.slice(0,10)){
+                                                    if(dateElm === habitDataElm.date){
                                                         return(
                                                             <div  key ={habitDataElm._id} className="viewDataDataValues">
                                                                 {habitDataElm.value}

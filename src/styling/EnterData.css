@@ -4,12 +4,7 @@
     padding-left: 5px;
     padding-top: 5px;
     font-size: 14px;
-
-    /* border: solid; */
-    /* background-color: aquamarine; */
     overflow-y: scroll;
-
-
 }
 .enterDataHeaderContainer{
     width: 100%;
@@ -39,31 +34,24 @@
     padding-left: 5px;
     border-bottom:solid ;
     border-color:#e2e8f0; 
+    /* border:solid ; */
 }
 .enterDataFormContainer{
     display: flex;
     flex-direction: row;   
-    /*  */
-    /* border: solid; */
 }
 .enterDataFormNames{
     padding-left: 5px;
     width: 100%;
     margin-top: 10px;
-
-
-    /*  */
-    /* border: solid; */
 }
+
 .enterDataFormInputContainer{
     display: flex;
     width: 80%;
     justify-content: flex-end;
-
-
-    /*  */
-    /* border: solid; */
 }
+
 .enterDataFormInput{
     display: flex;
     margin-top: 10px;
@@ -74,8 +62,6 @@
     width: 300px;
     justify-content: flex-end;
     text-align: center;
-    /*  */
-    /* border: solid; */
 }
 
 .enterDataFormInput:focus{
@@ -127,7 +113,6 @@
 
     .enterDataDateInput{
         font-size: 10px;
-        /* border: solid; */
     }
     .enterDataButton{
         font-size: 10px;

@@ -1,13 +1,10 @@
-import { Dialog, DialogTitle} from '@mui/material';
 import { useState } from 'react';
-import '../styling/NavBar.css';
-import serverFunctions from '../srcUtils/serverFunctions';
 import { useNavigate } from 'react-router-dom'
+import { Dialog, DialogTitle} from '@mui/material';
+import serverFunctions from '../srcUtils/serverFunctions'
+import '../styling/NavBar.css';
 
-
-
-
-const NewHabitDialog =  ({values,setValues,open,close,notify}) => {
+const NewHabitDialog =  ({values,setValues,open,close}) => {
     // State & Initial Values
     const initialValues = {
         habitName: "",
@@ -17,12 +14,11 @@ const NewHabitDialog =  ({values,setValues,open,close,notify}) => {
     //Local Storage
     const loggedUserJSON = window.localStorage.getItem('loggedOn')
     let user = JSON.parse(loggedUserJSON)
-
+    // React Router - Navigate
     const navigate = useNavigate();
-
     // Handler Functions
-    // Handle Submit of New Habit
     const handleSubmit = async (e) => {
+        // Handle Submit of New Habit
         e.preventDefault();
         try{
             const reqObj = {
@@ -38,9 +34,6 @@ const NewHabitDialog =  ({values,setValues,open,close,notify}) => {
             setValues({
                 ...values,
                 HabitAry: res.habitAry,
-                showAlert:false,
-                alertMsg: '',
-                severity: '',
             })
         }
         catch(err){
@@ -74,6 +67,7 @@ const NewHabitDialog =  ({values,setValues,open,close,notify}) => {
               },5000)   
         }
     }
+
     // Handle Reset of the Form
     const handleReset = (e) => {
         e.preventDefault();
@@ -115,6 +109,5 @@ const NewHabitDialog =  ({values,setValues,open,close,notify}) => {
         </div>
     )
 }
-
 
 export default NewHabitDialog
