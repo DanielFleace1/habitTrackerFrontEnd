@@ -51,7 +51,7 @@ const NavBar =  ({LoggedUser}) => {
             </Menu>
             <nav className ="nbLinksContainer">
             <div className='appNavBarLinksTitle'> Navigate App </div>
-                <Link className='appNavBarLinks' to = "EnterData">Enter Habist</Link>
+                <Link className='appNavBarLinks' to = "EnterData">Enter Habits</Link>
                 <Link className='appNavBarLinks' to = "ViewData">View Habits</Link> 
                 <Link className='appNavBarLinks' to = "ManageHabits"> Manage Habits</Link> 
             </nav>
