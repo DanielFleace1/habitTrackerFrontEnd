@@ -51,8 +51,8 @@ const NavBar =  ({LoggedUser}) => {
             </Menu>
             <nav className ="nbLinksContainer">
             <div className='appNavBarLinksTitle'> Navigate App </div>
-                <Link className='appNavBarLinks' to = "EnterData">Enter Habit</Link>
-                <Link className='appNavBarLinks' to = "ViewData">View Habit</Link> 
+                <Link className='appNavBarLinks' to = "EnterData">Enter Habist</Link>
+                <Link className='appNavBarLinks' to = "ViewData">View Habits</Link> 
                 <Link className='appNavBarLinks' to = "ManageHabits"> Manage Habits</Link> 
             </nav>
             <div className='appNavBarInfo'>
@@ -65,17 +65,17 @@ const NavBar =  ({LoggedUser}) => {
                 <DialogTitle sx={{textAlign:'center'}}> How to use this app </DialogTitle>
                 <div className='howToUseDialogParent'>  
                 To get started with the app click on “Add Habit ++” in the upper right hand corner. Users will be prompted to name a habit and select a tracking unit. 
-                The entered name will  be a promts  to answer each day on the <i>Enter Habit </i> page. 
+                The entered name will  be a prompt  to answer each day on the <i>Enter Habit </i> page. 
                 The tracking unit can be a number, Yes or No, scale of 1-10 or a free text field. Here’s an example: Name:”How many hours did I sleep last night?”; Output: “Number”.
                 <br/><br/>
                 After defining habits, users can navigate to the <i>Enter Habit </i> page to record their habits for the day. You can also enter a habit for any previous/future day. 
                 Users can change the date in the input at the top of the page. If a user enters data for a date that has already been entered it will overwrite the previous data. 
-                I ( the developer, Daniel)  am working on a feature to alert so users do not unknowingly overwrite their data.
+                I ( the developer, Daniel)  am working on a feature to alert users before they overwrite their data.
                 <br/><br/>
                 Users can view their data on the <i> View Habits</i> page. The date inputs at the top of the page allows users to view their historical habit data across any date range. 
                 Another feature I am considering adding is  aggregation methods & visualizations  so users can easily view their habits across days, weeks, months, or years in tabular or graphical form. 
                 <br/><br/>
-                Users can delete a habit and its data navigating to the  <i> Manage Habits </i> page to easily delete the habit.
+                Users can delete a habit and its data by navigating to the  <i> Manage Habits </i> page  and selecting a habit to delete.
                 <br/><br/>
                 If you're viewing the demo account (access at login screen) feel free to create new habits and add data.
                 <br/><br/>
